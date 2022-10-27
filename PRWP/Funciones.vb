@@ -1,5 +1,7 @@
 ﻿Imports System.Data.SqlClient
-
+'Imports System.Configuration
+'Imports System.IO
+'Imports System.Configuration.ConfigurationManager
 
 Module Funciones
     'Variables publicas para usar en toda la aplicacion
@@ -7,7 +9,17 @@ Module Funciones
     Public perfilUsuario As Integer = 1
     Public idOrdenProduccion As Int32 = 0
 
-    Public strConnection As String = "Initial Catalog=prwp;Data Source=localhost;Integrated Security=SSPI;"
+    Dim txtSqlServer As String = My.Computer.FileSystem.ReadAllText("sqlserver.dat")
+
+    'Public strConnection As String = "Initial Catalog=prwp;Data Source=" & txtSqlServer & ";Integrated Security=SSPI;"
+    Public strConnection As String = "Data Source=" & txtSqlServer & ";Initial Catalog=prwp;Persist Security Info=True;User ID=sa;Password=Prwp.2022++"
+
+    'Dim config As Configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None)
+    'config.AppSettings.Settings("radbtnBrowseSLD").Value = "newvalue"
+    'config.AppSettings.Settings("connectionStrings").Valu
+    'config.Save(ConfigurationSaveMode.Modified)
+    'ConfigurationManager.RefreshSection("appSettings")
+
     Public myConn = New SqlConnection(strConnection)
     Public myCmd = myConn.CreateCommand
 
