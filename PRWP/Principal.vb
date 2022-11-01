@@ -327,7 +327,8 @@ Public Class Principal
             (select count(id) from pesaje p where p.pp_detalle_id = ppd.id ) as rollos,
             (select iif(sum(peso)>0,sum(peso),0) from pesaje p1 where p1.pp_detalle_id = ppd.id) as pesado,
 	        opd.gramaje,
-            opd.medida
+            opd.medida,
+            opd.orden_produccion_id as op_id
         from puesta_punto pp
         inner join puesta_punto_detalle ppd on pp.id = ppd.puesta_punto_id
         inner join orden_produccion_detalle opd on ppd.op_detalle_id = opd.id
@@ -338,7 +339,8 @@ Public Class Principal
 	        pp.operario,
 	        ppd.cantidad,
 	        opd.gramaje,
-            opd.medida
+            opd.medida,
+            opd.orden_produccion_id
         having ppd.cantidad > (select count(id) from pesaje p where p.pp_detalle_id = ppd.id)
         "
         Dim Total As Integer = 0
@@ -347,8 +349,9 @@ Public Class Principal
         Dim DR As SqlDataReader = New SqlCommand(sql, myConn).ExecuteReader()
         Dim DT As New DataTable()
         With DT.Columns
-            .Add("ID", GetType(String))
-            .Add("P.P. ID", GetType(String))
+            .Add("PP ID", GetType(String))
+            .Add("PPD ID", GetType(String))
+            .Add("OP ID", GetType(String))
             .Add("Rebobinadora", GetType(String))
             .Add("Operario", GetType(String))
             .Add("Cant.", GetType(Integer))
@@ -362,6 +365,7 @@ Public Class Principal
                 DT.Rows.Add(
                     DR.Item("ppd_id"),
                     DR.Item("id"),
+                    DR.Item("op_id"),
                     DR.Item("rebobinadora"),
                     DR.Item("operario"),
                     DR.Item("cantidad"),
@@ -379,14 +383,17 @@ Public Class Principal
         myConn.Close
 
         With dgvPesaje
-            With .Columns("ID")
-                .Width = 80
+            With .Columns("PP ID")
+                .Width = 50
             End With
-            With .Columns("P.P. ID")
-                .Width = 80
+            With .Columns("PPD ID")
+                .Width = 50
+            End With
+            With .Columns("OP ID")
+                .Width = 50
             End With
             With .Columns("Medida")
-                .Width = 60
+                .Width = 50
                 .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
                 .ValueType = GetType(Integer)
                 .DefaultCellStyle.Format = "N0"
@@ -398,7 +405,7 @@ Public Class Principal
                 .DefaultCellStyle.Format = "N0"
             End With
             With .Columns("Rollos")
-                .Width = 60
+                .Width = 40
                 .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
                 .ValueType = GetType(Integer)
                 .DefaultCellStyle.Format = "N0"
@@ -409,9 +416,12 @@ Public Class Principal
                 .ValueType = GetType(Decimal)
                 .DefaultCellStyle.Format = "N0"
             End With
+            With .Columns("Gramaje")
+                .Width = 50
+            End With
             .RowHeadersVisible = False
-            .AutoResizeRows()
-        End With
+                .AutoResizeRows()
+            End With
 
     End Sub
 
@@ -468,14 +478,13 @@ Public Class Principal
 
         'Aplicar permisos
         If (perfilUsuario > 2) Then
-            btnPuestaP.Enabled = False
+
             btnOrdenProduccion.Enabled = False
             btnInformes.Enabled = False
             btnClientes.Enabled = False
             btnMedidas.Enabled = False
             btn_usuarios.Enabled = False
 
-            btnPuestaP.BackColor = Color.LightGray
             btnOrdenProduccion.BackColor = Color.LightGray
             btnInformes.BackColor = Color.LightGray
             btnClientes.BackColor = Color.LightGray
@@ -486,7 +495,6 @@ Public Class Principal
         Else
             bloquearTabs.Visible = False
 
-            btnPuestaP.Enabled = True
             btnOrdenProduccion.Enabled = True
             btnInformes.Enabled = True
             btnClientes.Enabled = True
@@ -526,6 +534,7 @@ Public Class Principal
 
     Private Sub btnPesaje_Click(sender As Object, e As EventArgs) Handles btnPesaje.Click
         tabsPrincipal.SelectedTab = tabPesaje
+        bloquearTabs.Text = "Pesaje"
         populateDgvPeso()
     End Sub
 
@@ -599,6 +608,7 @@ Public Class Principal
 
     Private Sub btnPuestaP_Click(sender As Object, e As EventArgs) Handles btnPuestaP.Click
         populateDgvPuestaPunto()
+        bloquearTabs.Text = "Puesta a Punto"
         tabsPrincipal.SelectedTab = tabPuestaPunto
     End Sub
 
@@ -667,32 +677,63 @@ Public Class Principal
 
 
     Private Sub tabsPrincipal_SelectedIndexChanged(sender As Object, e As EventArgs) Handles tabsPrincipal.SelectedIndexChanged
-        If (perfilUsuario > 2 And tabsPrincipal.SelectedIndex > 0) Then
+        If (perfilUsuario > 2 And tabsPrincipal.SelectedIndex > 1) Then
             tabsPrincipal.SelectedIndex = 0
             'MsgBox("Fuera Niga!")
         End If
     End Sub
 
     Private Sub dgvDetallePP_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDetallePP.CellDoubleClick
+        imprimirSticker()
 
+    End Sub
+
+    Public Function mm(med As Integer)
+        Dim milimetros As Integer
+        milimetros = med * 4
+        Return milimetros
+    End Function
+    Public Sub imprimirSticker()
         'PrintPreviewDialog1.Document = PrintSticker
         'PrintPreviewDialog1.Show()
         'DirectCast(PrintPreviewDialog1, Form).WindowState = FormWindowState.Maximized
         'If PrintPreviewDialog1.ShowDialog = DialogResult.OK Then
         'PrintDocument1.Print()
 
-        'PrintSticker.DefaultPageSettings.PaperSize = New System.Drawing.Printing.PaperSize("Sticker", 300, 150)
+        PrintSticker.DefaultPageSettings.PaperSize = New System.Drawing.Printing.PaperSize("Sticker", mm(100), mm(100))
         PrintSticker.Print()
         'End If
     End Sub
 
+
     Private Sub PrintSticker_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintSticker.PrintPage
-        'PrintSticker.DefaultPageSettings.PaperSize = New System.Drawing.Printing.PaperSize("Sticker", 200, 50)
-        PrintSticker.DefaultPageSettings.PaperSize = New System.Drawing.Printing.PaperSize("Sticker", 300, 150)
-        Dim myFont As Font = New Font("Arial", 14, FontStyle.Regular)
-        'e.Graphics.DrawRectangle(New Pen(Color.Black, 3), New Rectangle(0, 0, 300, 150))
-        e.Graphics.DrawString("PR-RB-OP-MESDIA/CONS-GRAM", myFont, Brushes.Black, 10, 10)
-        '.Graphics.DrawImage()
+
+        Dim altoLinea As Integer = 11
+        Dim inicioEscrituraY As Integer = 32
+        Dim arial As Font = New Font("Arial", 16, FontStyle.Regular)
+        Dim arialNegrita As Font = New Font("Arial", 24, FontStyle.Bold)
+        Dim dashedGray As Pen = New Pen(Drawing.Color.Gray, 1)
+        dashedGray.DashStyle = Drawing2D.DashStyle.Dash
+
+        e.Graphics.DrawRectangle(New Pen(Color.Black, 1), New Rectangle(0, 0, mm(100), mm(100)))
+
+        e.Graphics.DrawImage(Image.FromFile("logo.jpg"), mm(5), mm(5))
+
+        e.Graphics.DrawString("ORDEN #", arial, Brushes.Black, mm(3), mm(inicioEscrituraY))
+        e.Graphics.DrawString("CLIENTE:", arial, Brushes.Black, mm(3), mm(inicioEscrituraY + (altoLinea * 1)))
+        e.Graphics.DrawString("GRAMAJE:", arial, Brushes.Black, mm(3), mm(inicioEscrituraY + (altoLinea * 2)))
+        e.Graphics.DrawString("MEDIDA (cm):", arial, Brushes.Black, mm(3), mm(inicioEscrituraY + (altoLinea * 3)))
+        e.Graphics.DrawString("PESO (Kg):", arial, Brushes.Black, mm(3), mm(inicioEscrituraY + (altoLinea * 4)))
+        e.Graphics.DrawString("CONSECUTIVO:", arial, Brushes.Black, mm(3), mm(inicioEscrituraY + (altoLinea * 5)))
+
+        e.Graphics.DrawString("2200", arialNegrita, Brushes.Black, mm(50), mm(inicioEscrituraY - 2))
+        e.Graphics.DrawString("-10-26-01", arial, Brushes.Black, mm(70), mm(inicioEscrituraY))
+        e.Graphics.DrawString("INCOLPA", arial, Brushes.Black, mm(50), mm(inicioEscrituraY + (altoLinea * 1)))
+        e.Graphics.DrawString("45", arial, Brushes.Black, mm(50), mm(inicioEscrituraY + (altoLinea * 2)))
+        e.Graphics.DrawString("40", arial, Brushes.Black, mm(50), mm(inicioEscrituraY + (altoLinea * 3)))
+        e.Graphics.DrawString("130", arial, Brushes.Black, mm(50), mm(inicioEscrituraY + (altoLinea * 4)))
+        e.Graphics.DrawString("72", arialNegrita, Brushes.Black, mm(50), mm(inicioEscrituraY + (altoLinea * 5) - 2))
+
         'PrintDocument1.Print()
     End Sub
 
@@ -721,7 +762,9 @@ Public Class Principal
             'If (exe) Then
             populateDgvPeso()
             populateDgvDetallePP()
-            sticker.Show() 'Imprimir sticker
+            'sticker.Show() 'Imprimir sticker mostrar formulario de impresion de sticker
+            imprimirSticker()
+
             cmbDestino.SelectedValue = ""
             capturaPeso.Text = "0"
             'Else
