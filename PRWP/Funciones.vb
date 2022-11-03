@@ -58,7 +58,6 @@ Module Funciones
 
 
     Public Function sqlNonQuery(sSql As String)
-        Console.WriteLine(sSql)
         Dim myConn, myCmd, res
         myConn = New SqlConnection(strConnection)
         myCmd = myConn.CreateCommand
@@ -67,7 +66,6 @@ Module Funciones
         res = myCmd.ExecuteNonQuery()
         myCmd.Dispose()
         myConn.Close()
-
         sqlNonQuery = res
     End Function
 

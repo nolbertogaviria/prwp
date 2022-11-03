@@ -10,7 +10,7 @@ Public Class Usuarios
         chkActivo.Checked = True
         cmbPerfil.SelectedItem = 0
         txtId.Text = "0"
-        lblResultado.Text = "Esperando operacion..."
+        lblResultado.Text = "Esperando operación..."
         lblResultado.ForeColor = Color.Gray
     End Sub
 

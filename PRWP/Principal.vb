@@ -9,17 +9,27 @@ Imports System.Drawing.Printing
 Public Class Principal
 
 
-    Dim ppdIdSel, seconds As Integer
+    Dim ppdIdSel,
+        seconds As Integer,
+        pesajeId As Integer,
+        pesoOp As String = "",
+        pesoCliente As String = "",
+        pesoGramaje As String = "",
+        pesoMedida As String = "",
+        pesoPPId As String = ""
 
 
     Function leerCom() As String
 
-        Dim salida As String = ""
-        Dim bascula As String = ""
+        Dim salida As String = "",
+            bascula As String = "",
+            txtbsc = "bascula.dat"
+
         Dim arrl
         Dim lrga
         Dim puerto As IO.Ports.SerialPort = Nothing
-        Dim txtbsc = "bascula.dat"
+
+
 
 
 
@@ -63,17 +73,14 @@ Public Class Principal
                         .StopBits = stopBits
                     End With
                     Dim lectura = puerto.ReadLine()
-                    lectura = lectura.Trim() 'limpiar
-                    lectura = lectura.Replace(vbCr, "") 'remover carrier return
-                    lectura = lectura.Replace(vbLf, "") 'remover line feed
-                    lectura = Regex.Replace(lectura, " {2,}", " ") 'reemplazar espacios continuos por uno
-                    lectura = Regex.Replace(lectura, "[^0-9|,|.]", "") 'Remover letras
-                    Console.WriteLine("lectura:--->" & lectura)
-                    Console.WriteLine(Regex.Match(lectura, "\d").Success)
+                    'lectura = lectura.Trim() 'limpiar
+                    'lectura = lectura.Replace(vbCr, "") 'remover carrier return
+                    'lectura = lectura.Replace(vbLf, "") 'remover line feed
+                    'lectura = Regex.Replace(lectura, " {2,}", " ") 'reemplazar espacios continuos por uno
+                    lectura = Regex.Replace(lectura, "[^0-9|.]", "") 'Filtrar solo números y signo punto
                     If (lectura <> "") Then
                         lectura = Decimal.Parse(lectura)
                         lectura = Format(lectura, "Standard")
-                        'Dim lectura As String = Trim(Regex.Replace(puerto.ReadLine(), " {2,}", " "))
                         If (lectura.IndexOf(" ") > 0) Then
                             arrl = Split(lectura, " ")
                             lrga = arrl.Length
@@ -81,7 +88,6 @@ Public Class Principal
                         Else
                             salida = lectura
                         End If
-                        'estCom.Text = "Lectura recibida: " & salida
                     Else
                         lectura = -1
                     End If
@@ -328,10 +334,13 @@ Public Class Principal
             (select iif(sum(peso)>0,sum(peso),0) from pesaje p1 where p1.pp_detalle_id = ppd.id) as pesado,
 	        opd.gramaje,
             opd.medida,
-            opd.orden_produccion_id as op_id
+            opd.orden_produccion_id as op_id,
+            c.nombre as cliente
         from puesta_punto pp
         inner join puesta_punto_detalle ppd on pp.id = ppd.puesta_punto_id
         inner join orden_produccion_detalle opd on ppd.op_detalle_id = opd.id
+        inner join orden_produccion op on opd.orden_produccion_id = op.id
+	inner join cliente c on op.cliente_id = c.id
         group by
             ppd.id,
 	        pp.id,
@@ -340,7 +349,8 @@ Public Class Principal
 	        ppd.cantidad,
 	        opd.gramaje,
             opd.medida,
-            opd.orden_produccion_id
+            opd.orden_produccion_id,
+            c.nombre
         having ppd.cantidad > (select count(id) from pesaje p where p.pp_detalle_id = ppd.id)
         "
         Dim Total As Integer = 0
@@ -359,6 +369,7 @@ Public Class Principal
             .Add("Pesado", GetType(Decimal))
             .Add("Gramaje", GetType(String))
             .Add("Medida", GetType(String))
+            .Add("Cliente", GetType(String))
         End With
         If DR.HasRows Then
             Do While DR.Read()
@@ -372,7 +383,8 @@ Public Class Principal
                     DR.Item("rollos"),
                     DR.Item("pesado"),
                     DR.Item("gramaje"),
-                    DR.Item("medida")
+                    DR.Item("medida"),
+                    DR.Item("cliente")
                 )
             Loop
         End If
@@ -428,9 +440,8 @@ Public Class Principal
 
     Public Sub populateDgvDetallePP()
 
-
-
         Dim sql As String = "select
+            p.id,
             p.peso,
 	        p.fecha,
             p.bascula,
@@ -444,6 +455,7 @@ Public Class Principal
         Dim DR As SqlDataReader = New SqlCommand(sql, myConn).ExecuteReader()
         Dim DT As New DataTable()
         With DT.Columns
+            .Add("id", GetType(Integer))
             .Add("Peso", GetType(Decimal))
             .Add("Fecha", GetType(String))
             .Add("Bascula", GetType(String))
@@ -452,6 +464,7 @@ Public Class Principal
         If DR.HasRows Then
             Do While DR.Read()
                 DT.Rows.Add(
+                    DR.Item("id"),
                     DR.Item("peso"),
                     DR.Item("fecha"),
                     DR.Item("bascula"),
@@ -461,9 +474,15 @@ Public Class Principal
         End If
         DR.Close()
         DR = Nothing
-        dgvDetallePP.DataSource = DT
+        dgvDetallePeso.DataSource = DT
         DT = Nothing
         myConn.Close
+
+        With dgvDetallePeso
+            With .Columns("id")
+                Width = 100
+            End With
+        End With
 
     End Sub
 
@@ -662,8 +681,14 @@ Public Class Principal
 
     Private Sub dgvPesaje_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvPesaje.CellClick
         If e.RowIndex >= 0 Then
-            Dim id As String = dgvPesaje.Item(0, e.RowIndex).Value
-            lblPPId.Text = id
+            pesoPPId = dgvPesaje.Item("PP ID", e.RowIndex).Value
+            pesoOp = dgvPesaje.Item("OP ID", e.RowIndex).Value
+            pesoCliente = dgvPesaje.Item("Cliente", e.RowIndex).Value
+            pesoGramaje = dgvPesaje.Item("Gramaje", e.RowIndex).Value
+            pesoMedida = dgvPesaje.Item("Medida", e.RowIndex).Value
+
+            lblPPId.Text = pesoPPId
+
             populateDgvDetallePP()
 
             'cliente = dgvOP.Item(1, e.RowIndex).Value
@@ -683,7 +708,8 @@ Public Class Principal
         End If
     End Sub
 
-    Private Sub dgvDetallePP_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDetallePP.CellDoubleClick
+    Private Sub dgvDetallePP_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDetallePeso.CellDoubleClick
+        pesajeId = dgvDetallePeso.Item("id", e.RowIndex).Value
         imprimirSticker()
 
     End Sub
@@ -715,10 +741,9 @@ Public Class Principal
         Dim dashedGray As Pen = New Pen(Drawing.Color.Gray, 1)
         dashedGray.DashStyle = Drawing2D.DashStyle.Dash
 
+
         e.Graphics.DrawRectangle(New Pen(Color.Black, 1), New Rectangle(0, 0, mm(100), mm(100)))
-
         e.Graphics.DrawImage(Image.FromFile("logo.jpg"), mm(5), mm(5))
-
         e.Graphics.DrawString("ORDEN #", arial, Brushes.Black, mm(3), mm(inicioEscrituraY))
         e.Graphics.DrawString("CLIENTE:", arial, Brushes.Black, mm(3), mm(inicioEscrituraY + (altoLinea * 1)))
         e.Graphics.DrawString("GRAMAJE:", arial, Brushes.Black, mm(3), mm(inicioEscrituraY + (altoLinea * 2)))
@@ -726,13 +751,25 @@ Public Class Principal
         e.Graphics.DrawString("PESO (Kg):", arial, Brushes.Black, mm(3), mm(inicioEscrituraY + (altoLinea * 4)))
         e.Graphics.DrawString("CONSECUTIVO:", arial, Brushes.Black, mm(3), mm(inicioEscrituraY + (altoLinea * 5)))
 
-        e.Graphics.DrawString("2200", arialNegrita, Brushes.Black, mm(50), mm(inicioEscrituraY - 2))
-        e.Graphics.DrawString("-10-26-01", arial, Brushes.Black, mm(70), mm(inicioEscrituraY))
-        e.Graphics.DrawString("INCOLPA", arial, Brushes.Black, mm(50), mm(inicioEscrituraY + (altoLinea * 1)))
-        e.Graphics.DrawString("45", arial, Brushes.Black, mm(50), mm(inicioEscrituraY + (altoLinea * 2)))
-        e.Graphics.DrawString("40", arial, Brushes.Black, mm(50), mm(inicioEscrituraY + (altoLinea * 3)))
-        e.Graphics.DrawString("130", arial, Brushes.Black, mm(50), mm(inicioEscrituraY + (altoLinea * 4)))
-        e.Graphics.DrawString("72", arialNegrita, Brushes.Black, mm(50), mm(inicioEscrituraY + (altoLinea * 5) - 2))
+        Dim ssql = "select op_id, orden, cliente, gramaje, medida, peso, consecutivo from pesaje where id = " & pesajeId
+        myConn.Open()
+        Dim DR As SqlDataReader = New SqlCommand(ssql, myConn).ExecuteReader()
+        If DR.HasRows Then
+            Do While DR.Read()
+                e.Graphics.DrawString(DR.Item("op_id").padLeft(4, "0"), arialNegrita, Brushes.Black, mm(50), mm(inicioEscrituraY - 2))
+                e.Graphics.DrawString(DR.Item("orden"), arial, Brushes.Black, mm(70), mm(inicioEscrituraY))
+                e.Graphics.DrawString(DR.Item("cliente"), arial, Brushes.Black, mm(50), mm(inicioEscrituraY + (altoLinea * 1)))
+                e.Graphics.DrawString(DR.Item("gramaje"), arial, Brushes.Black, mm(50), mm(inicioEscrituraY + (altoLinea * 2)))
+                e.Graphics.DrawString(DR.Item("medida"), arial, Brushes.Black, mm(50), mm(inicioEscrituraY + (altoLinea * 3)))
+                e.Graphics.DrawString(DR.Item("peso"), arial, Brushes.Black, mm(50), mm(inicioEscrituraY + (altoLinea * 4)))
+                e.Graphics.DrawString(DR.Item("consecutivo"), arialNegrita, Brushes.Black, mm(50), mm(inicioEscrituraY + (altoLinea * 5) - 2))
+            Loop
+        End If
+        DR.Close()
+        myConn.Close()
+
+
+
 
         'PrintDocument1.Print()
     End Sub
@@ -747,16 +784,43 @@ Public Class Principal
         If (capturaPeso.Text <= 0) Then txtError &= "- Peso no válido" & vbCrLf
         If (cmbDestino.Text.Length <= 0) Then txtError &= "- Destino no válido" & vbCrLf
         If (txtError = "") Then
-            'MsgBox("Todo bien... procediendo con el resto")
+            Dim mesDia As String = Format(Now, "MM-dd")
+            Dim rolloOp As String = sqlScalar("select count(id) + 1 from pesaje where op_id = '" & pesoOp & "'")
+            Dim rolloON As String = sqlScalar("select count(id) + 1 from pesaje where op_id = '" & pesoOp & "' and gramaje = '" & pesoGramaje & "' and medida = '" & pesoMedida & "' group by gramaje, medida, op_id")
+            rolloOp = rolloOp.PadLeft(2, "0")
+            rolloON = rolloON.PadLeft(2, "0")
+
             Dim sqlS As String
             Dim exe
             sqlS = $"insert into pesaje (
-                pp_detalle_id, bascula, peso, destino, usuario_login) values (
-                {lblPPId.Text}, '{valBascula.Text}', '{capturaPeso.Text.Replace(".", "").Replace(",", ".")}', '{cmbDestino.Text}', '{loginUsuario}')"
-            Console.WriteLine(sqlS)
+                pp_detalle_id,
+                bascula,
+                peso,
+                destino,
+                usuario_login,
+                orden,
+                gramaje,
+                medida,
+                cliente,
+                consecutivo,
+                op_id
+            ) values (
+                {pesoPPId},
+                '{valBascula.Text}',
+                '{capturaPeso.Text.Replace(".", "").Replace(",", ".")}',
+                '{cmbDestino.Text}',
+                '{loginUsuario}',
+                '{mesDia}-{rolloON}',
+                '{pesoGramaje}',
+                '{pesoMedida}',
+                '{pesoCliente}',
+                '{rolloOp}',
+                '{pesoOp}'
+            ); SELECT SCOPE_IDENTITY()"
+
             myConn.Open()
             myCmd = New SqlCommand(sqlS, myConn)
-            exe = myCmd.ExecuteScalar()
+            pesajeId = myCmd.ExecuteScalar()
             myCmd.Dispose()
             myConn.Close()
             'If (exe) Then
@@ -771,7 +835,7 @@ Public Class Principal
             '    MsgBox("Ha ocurrido un error al tratar de guardar la información")
             'End If
         Else
-                MsgBox("Error:" & vbCrLf & txtError)
+            MsgBox("Error:" & vbCrLf & txtError)
         End If
     End Sub
 End Class
