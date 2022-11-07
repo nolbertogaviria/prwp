@@ -180,9 +180,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>prwpDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="prwpDataSet.vb">
+      <DependentUpon>prwpDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="prwpDataSet1.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>prwpDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="prwpDataSet1.vb">
       <DependentUpon>prwpDataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="PuestaPunto.Designer.vb">

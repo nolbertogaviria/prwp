@@ -787,11 +787,22 @@ Public Class Principal
             Dim mesDia As String = Format(Now, "MM-dd")
             Dim rolloOp As String = sqlScalar("select count(id) + 1 from pesaje where op_id = '" & pesoOp & "'")
             Dim rolloON As String = sqlScalar("select count(id) + 1 from pesaje where op_id = '" & pesoOp & "' and gramaje = '" & pesoGramaje & "' and medida = '" & pesoMedida & "' group by gramaje, medida, op_id")
-            rolloOp = rolloOp.PadLeft(2, "0")
-            rolloON = rolloON.PadLeft(2, "0")
+
+
+            If (IsNothing(rolloOp)) Then
+                rolloOp = "01"
+            Else
+                rolloOp = rolloOp.PadLeft(2, "0")
+            End If
+
+            If (IsNothing(rolloON)) Then
+                rolloON = "01"
+            Else
+                rolloON = rolloON.PadLeft(2, "0")
+            End If
 
             Dim sqlS As String
-            Dim exe
+
             sqlS = $"insert into pesaje (
                 pp_detalle_id,
                 bascula,
@@ -823,17 +834,14 @@ Public Class Principal
             pesajeId = myCmd.ExecuteScalar()
             myCmd.Dispose()
             myConn.Close()
-            'If (exe) Then
+
             populateDgvPeso()
             populateDgvDetallePP()
-            'sticker.Show() 'Imprimir sticker mostrar formulario de impresion de sticker
+            'sticker.Show() 'Imprimir sticker: RDLC mostrar formulario de impresion de sticker
             imprimirSticker()
 
             cmbDestino.SelectedValue = ""
             capturaPeso.Text = "0"
-            'Else
-            '    MsgBox("Ha ocurrido un error al tratar de guardar la información")
-            'End If
         Else
             MsgBox("Error:" & vbCrLf & txtError)
         End If
