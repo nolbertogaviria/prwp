@@ -180,9 +180,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>prwpDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="prwpDataSet.vb">
-      <DependentUpon>prwpDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="prwpDataSet1.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -244,11 +241,11 @@
     <EmbeddedResource Include="PuestaPunto.resx">
       <DependentUpon>PuestaPunto.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="reportes\orden_produccion.rdlc" />
     <EmbeddedResource Include="reportes\orden_produccion.resx">
       <DependentUpon>orden_produccion.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="reportes\Report1.rdlc" />
     <EmbeddedResource Include="reportes\sticker.resx">
       <DependentUpon>sticker.vb</DependentUpon>
     </EmbeddedResource>

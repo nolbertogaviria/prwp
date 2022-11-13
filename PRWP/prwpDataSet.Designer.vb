@@ -25,7 +25,7 @@ Option Explicit On
 Partial Public Class prwpDataSet
     Inherits Global.System.Data.DataSet
     
-    Private tablereport_op As report_opDataTable
+    Private tablereporte_orden_produccion As reporte_orden_produccionDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -56,8 +56,8 @@ Partial Public Class prwpDataSet
         If (Me.DetermineSchemaSerializationMode(info, context) = Global.System.Data.SchemaSerializationMode.IncludeSchema) Then
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXmlSchema(New Global.System.Xml.XmlTextReader(New Global.System.IO.StringReader(strSchema)))
-            If (Not (ds.Tables("report_op")) Is Nothing) Then
-                MyBase.Tables.Add(New report_opDataTable(ds.Tables("report_op")))
+            If (Not (ds.Tables("reporte_orden_produccion")) Is Nothing) Then
+                MyBase.Tables.Add(New reporte_orden_produccionDataTable(ds.Tables("reporte_orden_produccion")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -80,9 +80,9 @@ Partial Public Class prwpDataSet
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property report_op() As report_opDataTable
+    Public ReadOnly Property reporte_orden_produccion() As reporte_orden_produccionDataTable
         Get
-            Return Me.tablereport_op
+            Return Me.tablereporte_orden_produccion
         End Get
     End Property
     
@@ -153,8 +153,8 @@ Partial Public Class prwpDataSet
             Me.Reset
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXml(reader)
-            If (Not (ds.Tables("report_op")) Is Nothing) Then
-                MyBase.Tables.Add(New report_opDataTable(ds.Tables("report_op")))
+            If (Not (ds.Tables("reporte_orden_produccion")) Is Nothing) Then
+                MyBase.Tables.Add(New reporte_orden_produccionDataTable(ds.Tables("reporte_orden_produccion")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -188,10 +188,10 @@ Partial Public Class prwpDataSet
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Friend Overloads Sub InitVars(ByVal initTable As Boolean)
-        Me.tablereport_op = CType(MyBase.Tables("report_op"),report_opDataTable)
+        Me.tablereporte_orden_produccion = CType(MyBase.Tables("reporte_orden_produccion"),reporte_orden_produccionDataTable)
         If (initTable = true) Then
-            If (Not (Me.tablereport_op) Is Nothing) Then
-                Me.tablereport_op.InitVars
+            If (Not (Me.tablereporte_orden_produccion) Is Nothing) Then
+                Me.tablereporte_orden_produccion.InitVars
             End If
         End If
     End Sub
@@ -204,13 +204,13 @@ Partial Public Class prwpDataSet
         Me.Namespace = "http://tempuri.org/prwpDataSet.xsd"
         Me.EnforceConstraints = true
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
-        Me.tablereport_op = New report_opDataTable()
-        MyBase.Tables.Add(Me.tablereport_op)
+        Me.tablereporte_orden_produccion = New reporte_orden_produccionDataTable()
+        MyBase.Tables.Add(Me.tablereporte_orden_produccion)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Private Function ShouldSerializereport_op() As Boolean
+    Private Function ShouldSerializereporte_orden_produccion() As Boolean
         Return false
     End Function
     
@@ -273,15 +273,15 @@ Partial Public Class prwpDataSet
     End Function
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Public Delegate Sub report_opRowChangeEventHandler(ByVal sender As Object, ByVal e As report_opRowChangeEvent)
+    Public Delegate Sub reporte_orden_produccionRowChangeEventHandler(ByVal sender As Object, ByVal e As reporte_orden_produccionRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class report_opDataTable
-        Inherits Global.System.Data.TypedTableBase(Of report_opRow)
+    Partial Public Class reporte_orden_produccionDataTable
+        Inherits Global.System.Data.TypedTableBase(Of reporte_orden_produccionRow)
         
         Private columnOP_ID As Global.System.Data.DataColumn
         
@@ -291,21 +291,21 @@ Partial Public Class prwpDataSet
         
         Private columnCLIENTE As Global.System.Data.DataColumn
         
+        Private columnUSUARIO As Global.System.Data.DataColumn
+        
         Private columnMEDIDA As Global.System.Data.DataColumn
         
         Private columnGRAMAJE As Global.System.Data.DataColumn
         
-        Private _columnPESO_SOL_ As Global.System.Data.DataColumn
+        Private columnPESO_SOL As Global.System.Data.DataColumn
         
         Private columnPESAJE As Global.System.Data.DataColumn
-        
-        Private columnUSUARIO As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "report_op"
+            Me.TableName = "reporte_orden_produccion"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -370,6 +370,14 @@ Partial Public Class prwpDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property USUARIOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUSUARIO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property MEDIDAColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnMEDIDA
@@ -386,9 +394,9 @@ Partial Public Class prwpDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property _PESO_SOL_Column() As Global.System.Data.DataColumn
+        Public ReadOnly Property PESO_SOLColumn() As Global.System.Data.DataColumn
             Get
-                Return Me._columnPESO_SOL_
+                Return Me.columnPESO_SOL
             End Get
         End Property
         
@@ -397,14 +405,6 @@ Partial Public Class prwpDataSet
         Public ReadOnly Property PESAJEColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnPESAJE
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property USUARIOColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnUSUARIO
             End Get
         End Property
         
@@ -419,44 +419,44 @@ Partial Public Class prwpDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As report_opRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As reporte_orden_produccionRow
             Get
-                Return CType(Me.Rows(index),report_opRow)
+                Return CType(Me.Rows(index),reporte_orden_produccionRow)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event report_opRowChanging As report_opRowChangeEventHandler
+        Public Event reporte_orden_produccionRowChanging As reporte_orden_produccionRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event report_opRowChanged As report_opRowChangeEventHandler
+        Public Event reporte_orden_produccionRowChanged As reporte_orden_produccionRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event report_opRowDeleting As report_opRowChangeEventHandler
+        Public Event reporte_orden_produccionRowDeleting As reporte_orden_produccionRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event report_opRowDeleted As report_opRowChangeEventHandler
+        Public Event reporte_orden_produccionRowDeleted As reporte_orden_produccionRowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Sub Addreport_opRow(ByVal row As report_opRow)
+        Public Overloads Sub Addreporte_orden_produccionRow(ByVal row As reporte_orden_produccionRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function Addreport_opRow(ByVal FECHA As String, ByVal CLIENTE As String, ByVal MEDIDA As String, ByVal GRAMAJE As String, ByVal _PESO_SOL_ As Integer, ByVal PESAJE As Decimal, ByVal USUARIO As String) As report_opRow
-            Dim rowreport_opRow As report_opRow = CType(Me.NewRow,report_opRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, FECHA, Nothing, CLIENTE, MEDIDA, GRAMAJE, _PESO_SOL_, PESAJE, USUARIO}
-            rowreport_opRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowreport_opRow)
-            Return rowreport_opRow
+        Public Overloads Function Addreporte_orden_produccionRow(ByVal OP_ID As Integer, ByVal FECHA As String, ByVal OPD_ID As Integer, ByVal CLIENTE As String, ByVal USUARIO As String, ByVal MEDIDA As String, ByVal GRAMAJE As String, ByVal PESO_SOL As Integer, ByVal PESAJE As Decimal) As reporte_orden_produccionRow
+            Dim rowreporte_orden_produccionRow As reporte_orden_produccionRow = CType(Me.NewRow,reporte_orden_produccionRow)
+            Dim columnValuesArray() As Object = New Object() {OP_ID, FECHA, OPD_ID, CLIENTE, USUARIO, MEDIDA, GRAMAJE, PESO_SOL, PESAJE}
+            rowreporte_orden_produccionRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowreporte_orden_produccionRow)
+            Return rowreporte_orden_produccionRow
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As report_opDataTable = CType(MyBase.Clone,report_opDataTable)
+            Dim cln As reporte_orden_produccionDataTable = CType(MyBase.Clone,reporte_orden_produccionDataTable)
             cln.InitVars
             Return cln
         End Function
@@ -464,89 +464,83 @@ Partial Public Class prwpDataSet
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New report_opDataTable()
+            Return New reporte_orden_produccionDataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columnOP_ID = MyBase.Columns("OP ID")
+            Me.columnOP_ID = MyBase.Columns("OP_ID")
             Me.columnFECHA = MyBase.Columns("FECHA")
-            Me.columnOPD_ID = MyBase.Columns("OPD ID")
+            Me.columnOPD_ID = MyBase.Columns("OPD_ID")
             Me.columnCLIENTE = MyBase.Columns("CLIENTE")
+            Me.columnUSUARIO = MyBase.Columns("USUARIO")
             Me.columnMEDIDA = MyBase.Columns("MEDIDA")
             Me.columnGRAMAJE = MyBase.Columns("GRAMAJE")
-            Me._columnPESO_SOL_ = MyBase.Columns("PESO SOL.")
+            Me.columnPESO_SOL = MyBase.Columns("PESO_SOL")
             Me.columnPESAJE = MyBase.Columns("PESAJE")
-            Me.columnUSUARIO = MyBase.Columns("USUARIO")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnOP_ID = New Global.System.Data.DataColumn("OP ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnOP_ID = New Global.System.Data.DataColumn("OP_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnOP_ID)
             Me.columnFECHA = New Global.System.Data.DataColumn("FECHA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFECHA)
-            Me.columnOPD_ID = New Global.System.Data.DataColumn("OPD ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnOPD_ID = New Global.System.Data.DataColumn("OPD_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnOPD_ID)
             Me.columnCLIENTE = New Global.System.Data.DataColumn("CLIENTE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCLIENTE)
+            Me.columnUSUARIO = New Global.System.Data.DataColumn("USUARIO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUSUARIO)
             Me.columnMEDIDA = New Global.System.Data.DataColumn("MEDIDA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnMEDIDA)
             Me.columnGRAMAJE = New Global.System.Data.DataColumn("GRAMAJE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnGRAMAJE)
-            Me._columnPESO_SOL_ = New Global.System.Data.DataColumn("PESO SOL.", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            Me._columnPESO_SOL_.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnPESO_SOL_")
-            Me._columnPESO_SOL_.ExtendedProperties.Add("Generator_UserColumnName", "PESO SOL.")
-            MyBase.Columns.Add(Me._columnPESO_SOL_)
+            Me.columnPESO_SOL = New Global.System.Data.DataColumn("PESO_SOL", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPESO_SOL)
             Me.columnPESAJE = New Global.System.Data.DataColumn("PESAJE", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPESAJE)
-            Me.columnUSUARIO = New Global.System.Data.DataColumn("USUARIO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnUSUARIO)
-            Me.columnOP_ID.AutoIncrement = true
             Me.columnOP_ID.AllowDBNull = false
-            Me.columnOP_ID.ReadOnly = true
             Me.columnFECHA.ReadOnly = true
             Me.columnFECHA.MaxLength = 4000
-            Me.columnOPD_ID.AutoIncrement = true
             Me.columnOPD_ID.AllowDBNull = false
-            Me.columnOPD_ID.ReadOnly = true
             Me.columnCLIENTE.AllowDBNull = false
             Me.columnCLIENTE.MaxLength = 80
+            Me.columnUSUARIO.AllowDBNull = false
+            Me.columnUSUARIO.MaxLength = 20
             Me.columnMEDIDA.AllowDBNull = false
             Me.columnMEDIDA.MaxLength = 10
             Me.columnGRAMAJE.AllowDBNull = false
             Me.columnGRAMAJE.MaxLength = 10
             Me.columnPESAJE.ReadOnly = true
-            Me.columnUSUARIO.AllowDBNull = false
-            Me.columnUSUARIO.MaxLength = 20
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Newreport_opRow() As report_opRow
-            Return CType(Me.NewRow,report_opRow)
+        Public Function Newreporte_orden_produccionRow() As reporte_orden_produccionRow
+            Return CType(Me.NewRow,reporte_orden_produccionRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New report_opRow(builder)
+            Return New reporte_orden_produccionRow(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(report_opRow)
+            Return GetType(reporte_orden_produccionRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.report_opRowChangedEvent) Is Nothing) Then
-                RaiseEvent report_opRowChanged(Me, New report_opRowChangeEvent(CType(e.Row,report_opRow), e.Action))
+            If (Not (Me.reporte_orden_produccionRowChangedEvent) Is Nothing) Then
+                RaiseEvent reporte_orden_produccionRowChanged(Me, New reporte_orden_produccionRowChangeEvent(CType(e.Row,reporte_orden_produccionRow), e.Action))
             End If
         End Sub
         
@@ -554,8 +548,8 @@ Partial Public Class prwpDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.report_opRowChangingEvent) Is Nothing) Then
-                RaiseEvent report_opRowChanging(Me, New report_opRowChangeEvent(CType(e.Row,report_opRow), e.Action))
+            If (Not (Me.reporte_orden_produccionRowChangingEvent) Is Nothing) Then
+                RaiseEvent reporte_orden_produccionRowChanging(Me, New reporte_orden_produccionRowChangeEvent(CType(e.Row,reporte_orden_produccionRow), e.Action))
             End If
         End Sub
         
@@ -563,8 +557,8 @@ Partial Public Class prwpDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.report_opRowDeletedEvent) Is Nothing) Then
-                RaiseEvent report_opRowDeleted(Me, New report_opRowChangeEvent(CType(e.Row,report_opRow), e.Action))
+            If (Not (Me.reporte_orden_produccionRowDeletedEvent) Is Nothing) Then
+                RaiseEvent reporte_orden_produccionRowDeleted(Me, New reporte_orden_produccionRowChangeEvent(CType(e.Row,reporte_orden_produccionRow), e.Action))
             End If
         End Sub
         
@@ -572,14 +566,14 @@ Partial Public Class prwpDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.report_opRowDeletingEvent) Is Nothing) Then
-                RaiseEvent report_opRowDeleting(Me, New report_opRowChangeEvent(CType(e.Row,report_opRow), e.Action))
+            If (Not (Me.reporte_orden_produccionRowDeletingEvent) Is Nothing) Then
+                RaiseEvent reporte_orden_produccionRowDeleting(Me, New reporte_orden_produccionRowChangeEvent(CType(e.Row,reporte_orden_produccionRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Removereport_opRow(ByVal row As report_opRow)
+        Public Sub Removereporte_orden_produccionRow(ByVal row As reporte_orden_produccionRow)
             Me.Rows.Remove(row)
         End Sub
         
@@ -606,7 +600,7 @@ Partial Public Class prwpDataSet
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "report_opDataTable"
+            attribute2.FixedValue = "reporte_orden_produccionDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -653,26 +647,26 @@ Partial Public Class prwpDataSet
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class report_opRow
+    Partial Public Class reporte_orden_produccionRow
         Inherits Global.System.Data.DataRow
         
-        Private tablereport_op As report_opDataTable
+        Private tablereporte_orden_produccion As reporte_orden_produccionDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tablereport_op = CType(Me.Table,report_opDataTable)
+            Me.tablereporte_orden_produccion = CType(Me.Table,reporte_orden_produccionDataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property OP_ID() As Integer
             Get
-                Return CType(Me(Me.tablereport_op.OP_IDColumn),Integer)
+                Return CType(Me(Me.tablereporte_orden_produccion.OP_IDColumn),Integer)
             End Get
             Set
-                Me(Me.tablereport_op.OP_IDColumn) = value
+                Me(Me.tablereporte_orden_produccion.OP_IDColumn) = value
             End Set
         End Property
         
@@ -681,13 +675,13 @@ Partial Public Class prwpDataSet
         Public Property FECHA() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablereport_op.FECHAColumn),String)
+                    Return CType(Me(Me.tablereporte_orden_produccion.FECHAColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FECHA' de la tabla 'report_op' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FECHA' de la tabla 'reporte_orden_produccion' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablereport_op.FECHAColumn) = value
+                Me(Me.tablereporte_orden_produccion.FECHAColumn) = value
             End Set
         End Property
         
@@ -695,10 +689,10 @@ Partial Public Class prwpDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property OPD_ID() As Integer
             Get
-                Return CType(Me(Me.tablereport_op.OPD_IDColumn),Integer)
+                Return CType(Me(Me.tablereporte_orden_produccion.OPD_IDColumn),Integer)
             End Get
             Set
-                Me(Me.tablereport_op.OPD_IDColumn) = value
+                Me(Me.tablereporte_orden_produccion.OPD_IDColumn) = value
             End Set
         End Property
         
@@ -706,10 +700,21 @@ Partial Public Class prwpDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property CLIENTE() As String
             Get
-                Return CType(Me(Me.tablereport_op.CLIENTEColumn),String)
+                Return CType(Me(Me.tablereporte_orden_produccion.CLIENTEColumn),String)
             End Get
             Set
-                Me(Me.tablereport_op.CLIENTEColumn) = value
+                Me(Me.tablereporte_orden_produccion.CLIENTEColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property USUARIO() As String
+            Get
+                Return CType(Me(Me.tablereporte_orden_produccion.USUARIOColumn),String)
+            End Get
+            Set
+                Me(Me.tablereporte_orden_produccion.USUARIOColumn) = value
             End Set
         End Property
         
@@ -717,10 +722,10 @@ Partial Public Class prwpDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property MEDIDA() As String
             Get
-                Return CType(Me(Me.tablereport_op.MEDIDAColumn),String)
+                Return CType(Me(Me.tablereporte_orden_produccion.MEDIDAColumn),String)
             End Get
             Set
-                Me(Me.tablereport_op.MEDIDAColumn) = value
+                Me(Me.tablereporte_orden_produccion.MEDIDAColumn) = value
             End Set
         End Property
         
@@ -728,25 +733,26 @@ Partial Public Class prwpDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property GRAMAJE() As String
             Get
-                Return CType(Me(Me.tablereport_op.GRAMAJEColumn),String)
+                Return CType(Me(Me.tablereporte_orden_produccion.GRAMAJEColumn),String)
             End Get
             Set
-                Me(Me.tablereport_op.GRAMAJEColumn) = value
+                Me(Me.tablereporte_orden_produccion.GRAMAJEColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property _PESO_SOL_() As Integer
+        Public Property PESO_SOL() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tablereport_op._PESO_SOL_Column),Integer)
+                    Return CType(Me(Me.tablereporte_orden_produccion.PESO_SOLColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PESO SOL.' de la tabla 'report_op' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PESO_SOL' de la tabla 'reporte_orden_produccion' es DBNul"& _ 
+                            "l.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablereport_op._PESO_SOL_Column) = value
+                Me(Me.tablereporte_orden_produccion.PESO_SOLColumn) = value
             End Set
         End Property
         
@@ -755,61 +761,51 @@ Partial Public Class prwpDataSet
         Public Property PESAJE() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tablereport_op.PESAJEColumn),Decimal)
+                    Return CType(Me(Me.tablereporte_orden_produccion.PESAJEColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PESAJE' de la tabla 'report_op' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PESAJE' de la tabla 'reporte_orden_produccion' es DBNull."& _ 
+                            "", e)
                 End Try
             End Get
             Set
-                Me(Me.tablereport_op.PESAJEColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property USUARIO() As String
-            Get
-                Return CType(Me(Me.tablereport_op.USUARIOColumn),String)
-            End Get
-            Set
-                Me(Me.tablereport_op.USUARIOColumn) = value
+                Me(Me.tablereporte_orden_produccion.PESAJEColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsFECHANull() As Boolean
-            Return Me.IsNull(Me.tablereport_op.FECHAColumn)
+            Return Me.IsNull(Me.tablereporte_orden_produccion.FECHAColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetFECHANull()
-            Me(Me.tablereport_op.FECHAColumn) = Global.System.Convert.DBNull
+            Me(Me.tablereporte_orden_produccion.FECHAColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is_PESO_SOL_Null() As Boolean
-            Return Me.IsNull(Me.tablereport_op._PESO_SOL_Column)
+        Public Function IsPESO_SOLNull() As Boolean
+            Return Me.IsNull(Me.tablereporte_orden_produccion.PESO_SOLColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set_PESO_SOL_Null()
-            Me(Me.tablereport_op._PESO_SOL_Column) = Global.System.Convert.DBNull
+        Public Sub SetPESO_SOLNull()
+            Me(Me.tablereporte_orden_produccion.PESO_SOLColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsPESAJENull() As Boolean
-            Return Me.IsNull(Me.tablereport_op.PESAJEColumn)
+            Return Me.IsNull(Me.tablereporte_orden_produccion.PESAJEColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetPESAJENull()
-            Me(Me.tablereport_op.PESAJEColumn) = Global.System.Convert.DBNull
+            Me(Me.tablereporte_orden_produccion.PESAJEColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -817,16 +813,16 @@ Partial Public Class prwpDataSet
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Public Class report_opRowChangeEvent
+    Public Class reporte_orden_produccionRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As report_opRow
+        Private eventRow As reporte_orden_produccionRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New(ByVal row As report_opRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As reporte_orden_produccionRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -834,7 +830,7 @@ Partial Public Class prwpDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Row() As report_opRow
+        Public ReadOnly Property Row() As reporte_orden_produccionRow
             Get
                 Return Me.eventRow
             End Get
@@ -861,7 +857,7 @@ Namespace prwpDataSetTableAdapters
      Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
      Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class report_opTableAdapter
+    Partial Public Class reporte_orden_produccionTableAdapter
         Inherits Global.System.ComponentModel.Component
         
         Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
@@ -978,16 +974,16 @@ Namespace prwpDataSetTableAdapters
             Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "report_op"
-            tableMapping.ColumnMappings.Add("OP ID", "OP ID")
+            tableMapping.DataSetTable = "reporte_orden_produccion"
+            tableMapping.ColumnMappings.Add("OP_ID", "OP_ID")
             tableMapping.ColumnMappings.Add("FECHA", "FECHA")
-            tableMapping.ColumnMappings.Add("OPD ID", "OPD ID")
+            tableMapping.ColumnMappings.Add("OPD_ID", "OPD_ID")
             tableMapping.ColumnMappings.Add("CLIENTE", "CLIENTE")
+            tableMapping.ColumnMappings.Add("USUARIO", "USUARIO")
             tableMapping.ColumnMappings.Add("MEDIDA", "MEDIDA")
             tableMapping.ColumnMappings.Add("GRAMAJE", "GRAMAJE")
-            tableMapping.ColumnMappings.Add("PESO SOL.", "PESO SOL.")
+            tableMapping.ColumnMappings.Add("PESO_SOL", "PESO_SOL")
             tableMapping.ColumnMappings.Add("PESAJE", "PESAJE")
-            tableMapping.ColumnMappings.Add("USUARIO", "USUARIO")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -1004,17 +1000,30 @@ Namespace prwpDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "dbo.report_op"
-            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).CommandText = "SELECT OP_ID, FECHA, OPD_ID, CLIENTE, USUARIO, MEDIDA, GRAMAJE, PESO_SOL, PESAJE "& _ 
+                "FROM dbo.reporte_orden_produccion where FECHA between convert(date,@fecha_inicia"& _ 
+                "l,103) and convert(date,@fecha_final,103)"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fecha_inicial", Global.System.Data.SqlDbType.NVarChar, 4000, Global.System.Data.ParameterDirection.Input, 0, 0, "FECHA", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fecha_final", Global.System.Data.SqlDbType.NVarChar, 4000, Global.System.Data.ParameterDirection.Input, 0, 0, "FECHA", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As prwpDataSet.report_opDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As prwpDataSet.reporte_orden_produccionDataTable, ByVal fecha_inicial As String, ByVal fecha_final As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (fecha_inicial Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(fecha_inicial,String)
+            End If
+            If (fecha_final Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(fecha_final,String)
+            End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -1026,9 +1035,19 @@ Namespace prwpDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As prwpDataSet.report_opDataTable
+        Public Overloads Overridable Function GetData(ByVal fecha_inicial As String, ByVal fecha_final As String) As prwpDataSet.reporte_orden_produccionDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As prwpDataSet.report_opDataTable = New prwpDataSet.report_opDataTable()
+            If (fecha_inicial Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(fecha_inicial,String)
+            End If
+            If (fecha_final Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(fecha_final,String)
+            End If
+            Dim dataTable As prwpDataSet.reporte_orden_produccionDataTable = New prwpDataSet.reporte_orden_produccionDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function

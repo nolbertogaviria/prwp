@@ -32,22 +32,22 @@ PRWP
 Represents a strongly typed in-memory cache of data.
 </summary>
 </member>
-<member name="T:PRWP.prwpDataSet.report_opDataTable">
+<member name="T:PRWP.prwpDataSet.reporte_orden_produccionDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:PRWP.prwpDataSet.report_opRow">
+<member name="T:PRWP.prwpDataSet.reporte_orden_produccionRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:PRWP.prwpDataSet.report_opRowChangeEvent">
+<member name="T:PRWP.prwpDataSet.reporte_orden_produccionRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
-<member name="T:PRWP.prwpDataSetTableAdapters.report_opTableAdapter">
+<member name="T:PRWP.prwpDataSetTableAdapters.reporte_orden_produccionTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -97,22 +97,22 @@ Used to sort self-referenced table's rows
 Represents a strongly typed in-memory cache of data.
 </summary>
 </member>
-<member name="T:PRWP.prwpDataSet1.report_opDataTable">
+<member name="T:PRWP.prwpDataSet1.reporte_orden_produccionDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:PRWP.prwpDataSet1.report_opRow">
+<member name="T:PRWP.prwpDataSet1.reporte_orden_produccionRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:PRWP.prwpDataSet1.report_opRowChangeEvent">
+<member name="T:PRWP.prwpDataSet1.reporte_orden_produccionRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
-<member name="T:PRWP.prwpDataSet1TableAdapters.report_opTableAdapter">
+<member name="T:PRWP.prwpDataSet1TableAdapters.reporte_orden_produccionTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
