@@ -52,19 +52,41 @@ Public Class MedidasYGramajes
 
 
 
-    Private Sub btnClickTipoPapel(m As String)
+    Private Sub btnClickOperario(m As String)
         Dim hm As String = Format(Now, "hh:mm:ss tt")
-        Dim result As DialogResult = MsgBox("Eliminar tipo papel " & m & "?", MessageBoxButtons.YesNo)
+        Dim result As DialogResult = MsgBox("Eliminar operario " & m & "?", MessageBoxButtons.YesNo)
         If (result = DialogResult.Yes) Then
-            Dim sSql = "DELETE TOP(1) FROM tipo_papel WHERE tipo_papel = '" & m & "'"
+            Dim sSql = "DELETE TOP(1) FROM operario WHERE operario = '" & m & "'"
             Dim exe = sqlNonQuery(sSql)
             If (exe > 0) Then
-                populateTiposPapel()
-                lblResultado.Text = hm & " Tipo papel " & m & " eliminado correctamente"
+                populateOperarios()
+                lblResultado.Text = hm & " Operario " & m & " eliminado correctamente"
                 lblResultado.ForeColor = Color.Green
                 lblResultado.BackColor = Color.Transparent
             Else
-                lblResultado.Text = hm & " Ha ocurrido un error al tratar de eliminar el tipo papel " & m & ""
+                lblResultado.Text = hm & " Ha ocurrido un error al tratar de eliminar el operario " & m & ""
+                lblResultado.ForeColor = Color.Red
+                lblResultado.BackColor = Color.Transparent
+            End If
+        Else
+            Console.WriteLine("No pasa nada")
+        End If
+    End Sub
+
+
+    Private Sub btnClickRebobinadora(m As String)
+        Dim hm As String = Format(Now, "hh:mm:ss tt")
+        Dim result As DialogResult = MsgBox("Eliminar rebobinadora " & m & "?", MessageBoxButtons.YesNo)
+        If (result = DialogResult.Yes) Then
+            Dim sSql = "DELETE TOP(1) FROM rebobinadora WHERE rebobinadora = '" & m & "'"
+            Dim exe = sqlNonQuery(sSql)
+            If (exe > 0) Then
+                populateRebobinadoras()
+                lblResultado.Text = hm & " Rebobinadora " & m & " eliminada correctamente"
+                lblResultado.ForeColor = Color.Green
+                lblResultado.BackColor = Color.Transparent
+            Else
+                lblResultado.Text = hm & " Ha ocurrido un error al tratar de eliminar la rebobinadora " & m & ""
                 lblResultado.ForeColor = Color.Red
                 lblResultado.BackColor = Color.Transparent
             End If
@@ -114,29 +136,53 @@ Public Class MedidasYGramajes
     End Sub
 
 
-    Private Sub populateTiposPapel()
-        FlowLayoutPanel3.Controls.Clear()
-
-        myConn.Open()
-        Dim DR As SqlDataReader = New SqlCommand("SELECT tipo_papel FROM tipo_papel order by tipo_papel ", myConn).ExecuteReader()
-
-        If DR.HasRows Then
-            Do While DR.Read()
-                Dim b As New Button
-                b.Text = DR.Item("tipo_papel")
-                b.Name = DR.Item("tipo_papel")
-                FlowLayoutPanel3.Controls.Add(b)
-                AddHandler b.Click, Sub(sender2, eventargs2) btnClickTipoPapel(b.Text)
+    Private Sub populateOperarios()
+        dgvOperarios.DataSource = Nothing
+        Dim cmdsop As String
+        cmdsop = $"SELECT operario FROM operario order by operario "
+        If (myConn.State = ConnectionState.Closed) Then myConn.Open()
+        Dim DRop As SqlDataReader = New SqlCommand(cmdsop, myConn).ExecuteReader()
+        Dim DTop As New DataTable()
+        DTop.Columns.Add("Operario", GetType(String))
+        If DRop.HasRows Then
+            Do While DRop.Read()
+                DTop.Rows.Add(DRop.Item("operario"))
             Loop
         End If
-        DR.Close()
+        DRop.Close()
         myConn.Close()
+        dgvOperarios.DataSource = DTop
     End Sub
 
-    Private Sub medidas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    Private Sub populateRebobinadoras()
+        dgvRebobinadoras.DataSource = Nothing
+        Dim cmdsre As String
+        cmdsre = $"SELECT rebobinadora FROM rebobinadora order by rebobinadora "
+        If (myConn.State = ConnectionState.Closed) Then myConn.Open()
+        Dim DRre As SqlDataReader = New SqlCommand(cmdsre, myConn).ExecuteReader()
+        Dim DTre As New DataTable()
+        DTre.Columns.Add("Rebobinadora", GetType(String))
+        If DRre.HasRows Then
+            Do While DRre.Read()
+                DTre.Rows.Add(DRre.Item("rebobinadora"))
+            Loop
+        End If
+        DRre.Close()
+        myConn.Close()
+        dgvRebobinadoras.DataSource = DTre
+    End Sub
+
+    Private Sub inicial()
         populateMedidas()
         populateGramajes()
-        populateTiposPapel()
+        populateOperarios()
+        populateRebobinadoras()
+    End Sub
+
+
+    Private Sub medidas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        inicial()
     End Sub
 
 
@@ -239,36 +285,81 @@ Public Class MedidasYGramajes
         End If
     End Sub
 
-    Private Sub btnGuardarNuevoTipo_Click(sender As Object, e As EventArgs) Handles btnGuardarNuevoTipo.Click
+    Private Sub btnGuardarOperario_Click(sender As Object, e As EventArgs) Handles btnGuardarOperario.Click
         Dim terror As String = ""
 
-        If (Len(txtTipoPapel.Text) = 0) Then terror &= "- Tipo papel vacío" & vbCrLf
+        If (Len(txtOperario.Text) = 0) Then terror &= "- Operario vacío" & vbCrLf
 
         If (terror = "") Then
-            Dim xg As Integer = sqlScalar("SELECT count(tipo_papel) from tipo_papel where tipo_papel = '" & txtTipoPapel.Text & "'")
+            Dim xg As Integer = sqlScalar("SELECT count(operario) from operario where operario = '" & txtOperario.Text & "'")
             If (Not xg > 0) Then
-                txtTipoPapel.Text = txtTipoPapel.Text.ToUpper()
+                txtOperario.Text = txtOperario.Text.ToUpper()
                 Dim sqlS
-                sqlS = $"INSERT INTO tipo_papel (tipo_papel) values ('{txtTipoPapel.Text}')"
+                sqlS = $"INSERT INTO operario (operario) values ('{txtOperario.Text}')"
                 Dim exe = sqlNonQuery(sqlS)
 
                 Dim hm As String = Format(Now, "hh:mm:ss tt")
                 If (exe > 0) Then
-                    populateTiposPapel()
-                    txtTipoPapel.Text = ""
-                    lblResultado.Text = hm & " Tipo papel guardado correctamente"
+                    populateOperarios()
+                    txtOperario.Text = ""
+                    lblResultado.Text = hm & " Operario guardado correctamente"
                     lblResultado.ForeColor = Color.Green
                     lblResultado.BackColor = Color.Transparent
                 Else
-                    lblResultado.Text = hm & " Ha ocurrido un error al tratar de guardar el tipo de papel"
+                    lblResultado.Text = hm & " Ha ocurrido un error al tratar de guardar el operario"
                     lblResultado.ForeColor = Color.Red
                     lblResultado.BackColor = Color.Transparent
                 End If
             Else
-                MsgBox("Ya existe este tipo de papel")
+                MsgBox("Ya existe este operario")
             End If
         Else
             MsgBox(terror)
+        End If
+    End Sub
+
+    Private Sub btnGuardarRebob_Click(sender As Object, e As EventArgs) Handles btnGuardarRebob.Click
+        Dim terror As String = ""
+
+        If (Len(txtRebobinadora.Text) = 0) Then terror &= "- Campo Rebobinadora vacío" & vbCrLf
+
+        If (terror = "") Then
+            Dim xg As Integer = sqlScalar("SELECT count(rebobinadora) from rebobinadora where rebobinadora = '" & txtRebobinadora.Text & "'")
+            If (Not xg > 0) Then
+                txtRebobinadora.Text = txtRebobinadora.Text.ToUpper()
+                Dim sqlS
+                sqlS = $"INSERT INTO rebobinadora (rebobinadora) values ('{txtRebobinadora.Text}')"
+                Dim exe = sqlNonQuery(sqlS)
+
+                Dim hm As String = Format(Now, "hh:mm:ss tt")
+                If (exe > 0) Then
+                    populateRebobinadoras()
+                    txtRebobinadora.Text = ""
+                    lblResultado.Text = hm & " Rebobinadora guardada correctamente"
+                    lblResultado.ForeColor = Color.Green
+                    lblResultado.BackColor = Color.Transparent
+                Else
+                    lblResultado.Text = hm & " Ha ocurrido un error al tratar de guardar la rebobinadora"
+                    lblResultado.ForeColor = Color.Red
+                    lblResultado.BackColor = Color.Transparent
+                End If
+            Else
+                MsgBox("Ya existe esta rebobinadora")
+            End If
+        Else
+            MsgBox(terror)
+        End If
+    End Sub
+
+    Private Sub dgvRebobinadoras_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgvRebobinadoras.UserDeletingRow
+        If e.Row.Index >= 0 Then
+            btnClickRebobinadora(e.Row.Cells(0).Value)
+        End If
+    End Sub
+
+    Private Sub dgvOperarios_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgvOperarios.UserDeletingRow
+        If e.Row.Index >= 0 Then
+            btnClickOperario(e.Row.Cells(0).Value)
         End If
     End Sub
 End Class

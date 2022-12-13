@@ -194,6 +194,12 @@
     <Compile Include="PuestaPunto.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="puesta_punto_pesaje.Designer.vb">
+      <DependentUpon>puesta_punto_pesaje.vb</DependentUpon>
+    </Compile>
+    <Compile Include="puesta_punto_pesaje.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="reportes\orden_produccion.Designer.vb">
       <DependentUpon>orden_produccion.vb</DependentUpon>
     </Compile>
@@ -252,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PuestaPunto.resx">
       <DependentUpon>PuestaPunto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="puesta_punto_pesaje.resx">
+      <DependentUpon>puesta_punto_pesaje.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="reportes\orden_produccion.rdlc" />

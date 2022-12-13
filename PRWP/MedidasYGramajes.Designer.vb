@@ -35,12 +35,21 @@ Partial Class MedidasYGramajes
         Me.FlowLayoutPanel2 = New System.Windows.Forms.FlowLayoutPanel()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.lblNuevoTipo = New System.Windows.Forms.Label()
-        Me.btnGuardarNuevoTipo = New System.Windows.Forms.Button()
-        Me.txtTipoPapel = New System.Windows.Forms.TextBox()
-        Me.FlowLayoutPanel3 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.btnGuardarOperario = New System.Windows.Forms.Button()
+        Me.txtOperario = New System.Windows.Forms.TextBox()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnGuardarRebob = New System.Windows.Forms.Button()
+        Me.txtRebobinadora = New System.Windows.Forms.TextBox()
+        Me.dgvRebobinadoras = New System.Windows.Forms.DataGridView()
+        Me.dgvOperarios = New System.Windows.Forms.DataGridView()
+        Me.btnRefresh = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
+        CType(Me.dgvRebobinadoras, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvOperarios, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblResultado
@@ -157,17 +166,16 @@ Partial Class MedidasYGramajes
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.dgvOperarios)
         Me.GroupBox3.Controls.Add(Me.lblNuevoTipo)
-        Me.GroupBox3.Controls.Add(Me.btnGuardarNuevoTipo)
-        Me.GroupBox3.Controls.Add(Me.txtTipoPapel)
-        Me.GroupBox3.Controls.Add(Me.FlowLayoutPanel3)
+        Me.GroupBox3.Controls.Add(Me.btnGuardarOperario)
+        Me.GroupBox3.Controls.Add(Me.txtOperario)
         Me.GroupBox3.Location = New System.Drawing.Point(573, 12)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(274, 356)
         Me.GroupBox3.TabIndex = 29
         Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Tipo Papel"
-        Me.GroupBox3.Visible = False
+        Me.GroupBox3.Text = "Operarios"
         '
         'lblNuevoTipo
         '
@@ -175,43 +183,124 @@ Partial Class MedidasYGramajes
         Me.lblNuevoTipo.ForeColor = System.Drawing.SystemColors.HotTrack
         Me.lblNuevoTipo.Location = New System.Drawing.Point(6, 26)
         Me.lblNuevoTipo.Name = "lblNuevoTipo"
-        Me.lblNuevoTipo.Size = New System.Drawing.Size(62, 13)
+        Me.lblNuevoTipo.Size = New System.Drawing.Size(85, 13)
         Me.lblNuevoTipo.TabIndex = 27
-        Me.lblNuevoTipo.Text = "Nuevo tipo:"
+        Me.lblNuevoTipo.Text = "Nuevo Operario:"
         '
-        'btnGuardarNuevoTipo
+        'btnGuardarOperario
         '
-        Me.btnGuardarNuevoTipo.BackColor = System.Drawing.SystemColors.HotTrack
-        Me.btnGuardarNuevoTipo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnGuardarNuevoTipo.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.btnGuardarNuevoTipo.Location = New System.Drawing.Point(197, 19)
-        Me.btnGuardarNuevoTipo.Name = "btnGuardarNuevoTipo"
-        Me.btnGuardarNuevoTipo.Size = New System.Drawing.Size(70, 27)
-        Me.btnGuardarNuevoTipo.TabIndex = 26
-        Me.btnGuardarNuevoTipo.Text = "Guardar"
-        Me.btnGuardarNuevoTipo.UseVisualStyleBackColor = False
+        Me.btnGuardarOperario.BackColor = System.Drawing.SystemColors.HotTrack
+        Me.btnGuardarOperario.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnGuardarOperario.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.btnGuardarOperario.Location = New System.Drawing.Point(197, 19)
+        Me.btnGuardarOperario.Name = "btnGuardarOperario"
+        Me.btnGuardarOperario.Size = New System.Drawing.Size(70, 27)
+        Me.btnGuardarOperario.TabIndex = 26
+        Me.btnGuardarOperario.Text = "Guardar"
+        Me.btnGuardarOperario.UseVisualStyleBackColor = False
         '
-        'txtTipoPapel
+        'txtOperario
         '
-        Me.txtTipoPapel.Location = New System.Drawing.Point(91, 23)
-        Me.txtTipoPapel.Name = "txtTipoPapel"
-        Me.txtTipoPapel.Size = New System.Drawing.Size(100, 20)
-        Me.txtTipoPapel.TabIndex = 25
+        Me.txtOperario.Location = New System.Drawing.Point(91, 23)
+        Me.txtOperario.Name = "txtOperario"
+        Me.txtOperario.Size = New System.Drawing.Size(100, 20)
+        Me.txtOperario.TabIndex = 25
         '
-        'FlowLayoutPanel3
+        'GroupBox4
         '
-        Me.FlowLayoutPanel3.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.FlowLayoutPanel3.AutoScroll = True
-        Me.FlowLayoutPanel3.Location = New System.Drawing.Point(5, 52)
-        Me.FlowLayoutPanel3.Name = "FlowLayoutPanel3"
-        Me.FlowLayoutPanel3.Size = New System.Drawing.Size(262, 296)
-        Me.FlowLayoutPanel3.TabIndex = 1
+        Me.GroupBox4.Controls.Add(Me.dgvRebobinadoras)
+        Me.GroupBox4.Controls.Add(Me.Label1)
+        Me.GroupBox4.Controls.Add(Me.btnGuardarRebob)
+        Me.GroupBox4.Controls.Add(Me.txtRebobinadora)
+        Me.GroupBox4.Location = New System.Drawing.Point(853, 12)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(274, 356)
+        Me.GroupBox4.TabIndex = 30
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Rebobinadoras"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.ForeColor = System.Drawing.SystemColors.HotTrack
+        Me.Label1.Location = New System.Drawing.Point(6, 26)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(80, 13)
+        Me.Label1.TabIndex = 27
+        Me.Label1.Text = "Nueva Rebob.:"
+        '
+        'btnGuardarRebob
+        '
+        Me.btnGuardarRebob.BackColor = System.Drawing.SystemColors.HotTrack
+        Me.btnGuardarRebob.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnGuardarRebob.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.btnGuardarRebob.Location = New System.Drawing.Point(197, 19)
+        Me.btnGuardarRebob.Name = "btnGuardarRebob"
+        Me.btnGuardarRebob.Size = New System.Drawing.Size(70, 27)
+        Me.btnGuardarRebob.TabIndex = 26
+        Me.btnGuardarRebob.Text = "Guardar"
+        Me.btnGuardarRebob.UseVisualStyleBackColor = False
+        '
+        'txtRebobinadora
+        '
+        Me.txtRebobinadora.Location = New System.Drawing.Point(91, 23)
+        Me.txtRebobinadora.Name = "txtRebobinadora"
+        Me.txtRebobinadora.Size = New System.Drawing.Size(100, 20)
+        Me.txtRebobinadora.TabIndex = 25
+        '
+        'dgvRebobinadoras
+        '
+        Me.dgvRebobinadoras.AllowUserToAddRows = False
+        Me.dgvRebobinadoras.AllowUserToOrderColumns = True
+        Me.dgvRebobinadoras.AllowUserToResizeRows = False
+        Me.dgvRebobinadoras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvRebobinadoras.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.dgvRebobinadoras.Location = New System.Drawing.Point(3, 57)
+        Me.dgvRebobinadoras.Name = "dgvRebobinadoras"
+        Me.dgvRebobinadoras.ReadOnly = True
+        Me.dgvRebobinadoras.RowHeadersVisible = False
+        Me.dgvRebobinadoras.RowHeadersWidth = 36
+        Me.dgvRebobinadoras.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.dgvRebobinadoras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvRebobinadoras.Size = New System.Drawing.Size(268, 296)
+        Me.dgvRebobinadoras.TabIndex = 28
+        '
+        'dgvOperarios
+        '
+        Me.dgvOperarios.AllowUserToAddRows = False
+        Me.dgvOperarios.AllowUserToOrderColumns = True
+        Me.dgvOperarios.AllowUserToResizeRows = False
+        Me.dgvOperarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvOperarios.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.dgvOperarios.Location = New System.Drawing.Point(3, 57)
+        Me.dgvOperarios.Name = "dgvOperarios"
+        Me.dgvOperarios.ReadOnly = True
+        Me.dgvOperarios.RowHeadersVisible = False
+        Me.dgvOperarios.RowHeadersWidth = 36
+        Me.dgvOperarios.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.dgvOperarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvOperarios.Size = New System.Drawing.Size(268, 296)
+        Me.dgvOperarios.TabIndex = 29
+        '
+        'btnRefresh
+        '
+        Me.btnRefresh.BackColor = System.Drawing.SystemColors.HotTrack
+        Me.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnRefresh.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.btnRefresh.Location = New System.Drawing.Point(1023, 374)
+        Me.btnRefresh.Name = "btnRefresh"
+        Me.btnRefresh.Size = New System.Drawing.Size(101, 27)
+        Me.btnRefresh.TabIndex = 29
+        Me.btnRefresh.Text = "Refrescar"
+        Me.btnRefresh.UseVisualStyleBackColor = False
         '
         'MedidasYGramajes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(573, 450)
+        Me.ClientSize = New System.Drawing.Size(1143, 504)
+        Me.Controls.Add(Me.btnRefresh)
+        Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -220,13 +309,17 @@ Partial Class MedidasYGramajes
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "MedidasYGramajes"
-        Me.Text = "Medidas y Gramajes"
+        Me.Text = "Medidas, Gramajes, Operarios y Rebobinadoras"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
+        CType(Me.dgvRebobinadoras, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvOperarios, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -244,7 +337,13 @@ Partial Class MedidasYGramajes
     Friend WithEvents FlowLayoutPanel2 As FlowLayoutPanel
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents lblNuevoTipo As Label
-    Friend WithEvents btnGuardarNuevoTipo As Button
-    Friend WithEvents txtTipoPapel As TextBox
-    Friend WithEvents FlowLayoutPanel3 As FlowLayoutPanel
+    Friend WithEvents btnGuardarOperario As Button
+    Friend WithEvents txtOperario As TextBox
+    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents btnGuardarRebob As Button
+    Friend WithEvents txtRebobinadora As TextBox
+    Friend WithEvents dgvRebobinadoras As DataGridView
+    Friend WithEvents dgvOperarios As DataGridView
+    Friend WithEvents btnRefresh As Button
 End Class

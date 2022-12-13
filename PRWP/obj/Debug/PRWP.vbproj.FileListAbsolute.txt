@@ -83,3 +83,4 @@ C:\Users\nolgaviria\source\repos\PRWP\PRWP\obj\Debug\PRWP.xml
 C:\Users\nolgaviria\source\repos\PRWP\PRWP\obj\Debug\PRWP.orden_produccion.resources
 C:\Users\nolgaviria\source\repos\PRWP\PRWP\obj\Debug\PRWP.pesaje.resources
 C:\Users\nolgaviria\source\repos\PRWP\PRWP\obj\Debug\PRWP.puesta_punto.resources
+C:\Users\nolgaviria\source\repos\PRWP\PRWP\obj\Debug\PRWP.puesta_punto_pesaje.resources
