@@ -78,6 +78,7 @@ Public Class Principal
                     'lectura = lectura.Replace(vbLf, "") 'remover line feed
                     'lectura = Regex.Replace(lectura, " {2,}", " ") 'reemplazar espacios continuos por uno
                     lectura = Regex.Replace(lectura, "[^0-9|.]", "") 'Filtrar solo números y signo punto
+                    lectura = Regex.Replace(lectura, "[.]", ",")
                     If (lectura <> "") Then
                         lectura = Decimal.Parse(lectura)
                         lectura = Format(lectura, "Standard")

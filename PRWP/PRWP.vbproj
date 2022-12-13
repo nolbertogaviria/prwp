@@ -200,6 +200,18 @@
     <Compile Include="reportes\orden_produccion.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="reportes\pesaje.Designer.vb">
+      <DependentUpon>pesaje.vb</DependentUpon>
+    </Compile>
+    <Compile Include="reportes\pesaje.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reportes\puesta_punto.Designer.vb">
+      <DependentUpon>puesta_punto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="reportes\puesta_punto.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="reportes\sticker.Designer.vb">
       <DependentUpon>sticker.vb</DependentUpon>
     </Compile>
@@ -245,6 +257,13 @@
     <EmbeddedResource Include="reportes\orden_produccion.rdlc" />
     <EmbeddedResource Include="reportes\orden_produccion.resx">
       <DependentUpon>orden_produccion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportes\pesaje.resx">
+      <DependentUpon>pesaje.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportes\puesta_punto.rdlc" />
+    <EmbeddedResource Include="reportes\puesta_punto.resx">
+      <DependentUpon>puesta_punto.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="reportes\sticker.resx">
       <DependentUpon>sticker.vb</DependentUpon>

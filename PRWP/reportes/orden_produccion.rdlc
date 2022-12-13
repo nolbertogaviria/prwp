@@ -75,13 +75,10 @@
                   <Width>2.5cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>1.65333cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>1.64451cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.5cm</Width>
@@ -94,47 +91,6 @@
                 <TablixRow>
                   <Height>0.6cm</Height>
                   <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox2">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>OPD ID</Value>
-                                  <Style>
-                                    <FontSize>11pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Color>#666666</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox2</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <BottomBorder>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <BackgroundColor>White</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox3">
@@ -153,7 +109,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Left</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -185,7 +141,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>MEDIDA</Value>
+                                  <Value>MED.</Value>
                                   <Style>
                                     <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -226,7 +182,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>GRAMAJE</Value>
+                                  <Value>GRAM.</Value>
                                   <Style>
                                     <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -347,39 +303,6 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="OPD_ID">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Count(Fields!OPD_ID.Value)</Value>
-                                  <Style>
-                                    <FontWeight>Normal</FontWeight>
-                                    <Color>#333333</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>OPD_ID</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <BackgroundColor>White</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
                         <Textbox Name="USUARIO">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -394,7 +317,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>USUARIO</rd:DefaultName>
@@ -427,7 +352,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>MEDIDA</rd:DefaultName>
@@ -460,7 +387,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>GRAMAJE</rd:DefaultName>
@@ -489,11 +418,14 @@
                                   <Value>=Sum(Fields!PESO_SOL.Value)</Value>
                                   <Style>
                                     <FontWeight>Normal</FontWeight>
+                                    <Format>#,0;(#,0)</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>PESO_SOL</rd:DefaultName>
@@ -522,11 +454,14 @@
                                   <Value>=Sum(Fields!PESAJE.Value)</Value>
                                   <Style>
                                     <FontWeight>Normal</FontWeight>
+                                    <Format>#,0;(#,0)</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>PESAJE</rd:DefaultName>
@@ -548,44 +483,6 @@
                 <TablixRow>
                   <Height>0.6cm</Height>
                   <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox46">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Count(Fields!OPD_ID.Value)</Value>
-                                  <Style>
-                                    <FontWeight>Normal</FontWeight>
-                                    <Color>#333333</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox46</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <BottomBorder>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <BackgroundColor>White</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox47">
@@ -712,11 +609,14 @@
                                   <Value>=Sum(Fields!PESO_SOL.Value)</Value>
                                   <Style>
                                     <FontWeight>Normal</FontWeight>
+                                    <Format>#,0;(#,0)</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox50</rd:DefaultName>
@@ -750,11 +650,14 @@
                                   <Value>=Sum(Fields!PESAJE.Value)</Value>
                                   <Style>
                                     <FontWeight>Normal</FontWeight>
+                                    <Format>#,0;(#,0)</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox51</rd:DefaultName>
@@ -781,44 +684,6 @@
                 <TablixRow>
                   <Height>0.6cm</Height>
                   <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox39">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Count(Fields!OPD_ID.Value)</Value>
-                                  <Style>
-                                    <FontWeight>Normal</FontWeight>
-                                    <Color>#333333</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox39</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <BottomBorder>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <BackgroundColor>White</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox40">
@@ -945,11 +810,14 @@
                                   <Value>=Sum(Fields!PESO_SOL.Value)</Value>
                                   <Style>
                                     <FontWeight>Normal</FontWeight>
+                                    <Format>#,0;(#,0)</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox43</rd:DefaultName>
@@ -983,11 +851,14 @@
                                   <Value>=Sum(Fields!PESAJE.Value)</Value>
                                   <Style>
                                     <FontWeight>Normal</FontWeight>
+                                    <Format>#,0;(#,0)</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox44</rd:DefaultName>
@@ -1014,44 +885,6 @@
                 <TablixRow>
                   <Height>0.6cm</Height>
                   <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox31">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Count(Fields!OPD_ID.Value)</Value>
-                                  <Style>
-                                    <FontWeight>Normal</FontWeight>
-                                    <Color>#333333</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox31</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <BottomBorder>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <BackgroundColor>White</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox32">
@@ -1178,11 +1011,14 @@
                                   <Value>=Sum(Fields!PESO_SOL.Value)</Value>
                                   <Style>
                                     <FontWeight>Normal</FontWeight>
+                                    <Format>#,0;(#,0)</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox35</rd:DefaultName>
@@ -1216,11 +1052,14 @@
                                   <Value>=Sum(Fields!PESAJE.Value)</Value>
                                   <Style>
                                     <FontWeight>Normal</FontWeight>
+                                    <Format>#,0;(#,0)</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox36</rd:DefaultName>
@@ -1249,39 +1088,6 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox22">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Count(Fields!OPD_ID.Value)</Value>
-                                  <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Color>#333333</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox22</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <BackgroundColor>White</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
                         <Textbox Name="Textbox23">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -1301,9 +1107,7 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox23</rd:DefaultName>
                           <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
+                            <Border />
                             <BackgroundColor>White</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1334,9 +1138,7 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox24</rd:DefaultName>
                           <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
+                            <Border />
                             <BackgroundColor>White</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1367,9 +1169,7 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox25</rd:DefaultName>
                           <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
+                            <Border />
                             <BackgroundColor>White</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1391,18 +1191,19 @@
                                   <Value>=Sum(Fields!PESO_SOL.Value)</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>#,0;(#,0)</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox26</rd:DefaultName>
                           <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
+                            <Border />
                             <BackgroundColor>White</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1424,18 +1225,19 @@
                                   <Value>=Sum(Fields!PESAJE.Value)</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>#,0;(#,0)</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox27</rd:DefaultName>
                           <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
+                            <Border />
                             <BackgroundColor>White</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1456,14 +1258,13 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
-                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>2.5cm</Size>
+                    <Size>4.06104cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox17">
                         <CanGrow>true</CanGrow>
@@ -1481,7 +1282,7 @@
                               </TextRun>
                             </TextRuns>
                             <Style>
-                              <TextAlign>Right</TextAlign>
+                              <TextAlign>Left</TextAlign>
                             </Style>
                           </Paragraph>
                         </Paragraphs>
@@ -1525,7 +1326,7 @@
                                   </TextRun>
                                 </TextRuns>
                                 <Style>
-                                  <TextAlign>Right</TextAlign>
+                                  <TextAlign>Left</TextAlign>
                                 </Style>
                               </Paragraph>
                             </Paragraphs>
@@ -1569,7 +1370,7 @@
                                       </TextRun>
                                     </TextRuns>
                                     <Style>
-                                      <TextAlign>Right</TextAlign>
+                                      <TextAlign>Left</TextAlign>
                                     </Style>
                                   </Paragraph>
                                 </Paragraphs>
@@ -1613,7 +1414,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>2.5cm</Size>
+                    <Size>4.06104cm</Size>
                     <CellContents>
                       <Textbox Name="CLIENTE">
                         <CanGrow>true</CanGrow>
@@ -1757,7 +1558,6 @@
                             <TablixMember>
                               <Group Name="Detalles" />
                               <Visibility>
-                                <Hidden>true</Hidden>
                                 <ToggleItem>OP_ID</ToggleItem>
                               </Visibility>
                             </TablixMember>
@@ -1766,7 +1566,6 @@
                             </TablixMember>
                           </TablixMembers>
                           <Visibility>
-                            <Hidden>true</Hidden>
                             <ToggleItem>FECHA</ToggleItem>
                           </Visibility>
                         </TablixMember>
@@ -1814,7 +1613,6 @@
                         </TablixMember>
                       </TablixMembers>
                       <Visibility>
-                        <Hidden>true</Hidden>
                         <ToggleItem>CLIENTE</ToggleItem>
                       </Visibility>
                     </TablixMember>
@@ -1907,7 +1705,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>2.5cm</Size>
+                    <Size>4.06104cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox19">
                         <CanGrow>true</CanGrow>
@@ -1928,9 +1726,7 @@
                         </Paragraphs>
                         <rd:DefaultName>Textbox19</rd:DefaultName>
                         <Style>
-                          <Border>
-                            <Style>None</Style>
-                          </Border>
+                          <Border />
                           <BackgroundColor>White</BackgroundColor>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
@@ -1964,9 +1760,7 @@
                             </Paragraphs>
                             <rd:DefaultName>Textbox20</rd:DefaultName>
                             <Style>
-                              <Border>
-                                <Style>None</Style>
-                              </Border>
+                              <Border />
                               <BackgroundColor>White</BackgroundColor>
                               <PaddingLeft>2pt</PaddingLeft>
                               <PaddingRight>2pt</PaddingRight>
@@ -2000,9 +1794,7 @@
                                 </Paragraphs>
                                 <rd:DefaultName>Textbox21</rd:DefaultName>
                                 <Style>
-                                  <Border>
-                                    <Style>None</Style>
-                                  </Border>
+                                  <Border />
                                   <BackgroundColor>White</BackgroundColor>
                                   <PaddingLeft>2pt</PaddingLeft>
                                   <PaddingRight>2pt</PaddingRight>
@@ -2020,23 +1812,27 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatRowHeaders>true</RepeatRowHeaders>
+            <FixedRowHeaders>true</FixedRowHeaders>
             <DataSetName>DataSet1</DataSetName>
             <Height>3.6cm</Height>
-            <Width>22.5cm</Width>
+            <Width>19.85889cm</Width>
             <Style>
               <Border>
+                <Color>DimGray</Color>
                 <Style>None</Style>
               </Border>
+              <VerticalAlign>Top</VerticalAlign>
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>2in</Height>
+        <Height>1.5in</Height>
         <Style />
       </Body>
-      <Width>8.85827in</Width>
+      <Width>8.858in</Width>
       <Page>
         <PageHeader>
-          <Height>2.54cm</Height>
+          <Height>2.06375cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -2087,6 +1883,138 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
+            <Textbox Name="fecha_inicial">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Fecha Inicial:</Value>
+                      <Style>
+                        <FontStyle>Italic</FontStyle>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>fecha_inicial</rd:DefaultName>
+              <Top>0.76581cm</Top>
+              <Left>5.18653cm</Left>
+              <Height>0.52754cm</Height>
+              <Width>2.15472cm</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="fecha_inicial2">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!fecha_inicial.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>fecha_inicial</rd:DefaultName>
+              <Top>0.75223cm</Top>
+              <Left>7.38327cm</Left>
+              <Height>0.52754cm</Height>
+              <Width>2.94979cm</Width>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="fecha_inicial3">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Fecha Final:</Value>
+                      <Style>
+                        <FontStyle>Italic</FontStyle>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>fecha_inicial</rd:DefaultName>
+              <Top>1.2369cm</Top>
+              <Left>5.18653cm</Left>
+              <Height>0.52754cm</Height>
+              <Width>2.15472cm</Width>
+              <ZIndex>4</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="fecha_inicial4">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!fecha_final.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>fecha_inicial</rd:DefaultName>
+              <Top>1.2586cm</Top>
+              <Left>7.39064cm</Left>
+              <Height>0.52754cm</Height>
+              <Width>2.94979cm</Width>
+              <ZIndex>5</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
           </ReportItems>
           <Style>
             <Border>
@@ -2095,9 +2023,104 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>2.54cm</Height>
+          <Height>0.9937cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="ExecutionTime">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!ExecutionTime</Value>
+                      <Style>
+                        <FontStyle>Italic</FontStyle>
+                        <FontSize>9pt</FontSize>
+                        <Color>DimGray</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>ExecutionTime</rd:DefaultName>
+              <Top>0.00353cm</Top>
+              <Height>0.6cm</Height>
+              <Width>7.34125cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="TotalPages">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Pág. </Value>
+                      <Style>
+                        <FontStyle>Italic</FontStyle>
+                        <FontSize>9pt</FontSize>
+                        <Color>DimGray</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>=Globals!PageNumber</Value>
+                      <Style>
+                        <FontStyle>Italic</FontStyle>
+                        <FontSize>9pt</FontSize>
+                        <Color>DimGray</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value> de </Value>
+                      <Style>
+                        <FontStyle>Italic</FontStyle>
+                        <FontSize>9pt</FontSize>
+                        <Color>DimGray</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>=Globals!TotalPages</Value>
+                      <Style>
+                        <FontStyle>Italic</FontStyle>
+                        <FontSize>9pt</FontSize>
+                        <Color>DimGray</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>TotalPages</rd:DefaultName>
+              <Left>15.71438cm</Left>
+              <Height>0.6cm</Height>
+              <Width>6.64451cm</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
           <Style>
             <Border>
               <Style>None</Style>

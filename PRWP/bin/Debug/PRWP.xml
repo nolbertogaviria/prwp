@@ -37,7 +37,17 @@ Represents a strongly typed in-memory cache of data.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:PRWP.prwpDataSet.reporte_puesta_puntoDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:PRWP.prwpDataSet.reporte_orden_produccionRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:PRWP.prwpDataSet.reporte_puesta_puntoRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -47,7 +57,17 @@ Represents strongly named DataRow class.
 Row event argument class
 </summary>
 </member>
+<member name="T:PRWP.prwpDataSet.reporte_puesta_puntoRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="T:PRWP.prwpDataSetTableAdapters.reporte_orden_produccionTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:PRWP.prwpDataSetTableAdapters.reporte_puesta_puntoTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>

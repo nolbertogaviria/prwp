@@ -27,6 +27,8 @@ Partial Public Class prwpDataSet
     
     Private tablereporte_orden_produccion As reporte_orden_produccionDataTable
     
+    Private tablereporte_puesta_punto As reporte_puesta_puntoDataTable
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -59,6 +61,9 @@ Partial Public Class prwpDataSet
             If (Not (ds.Tables("reporte_orden_produccion")) Is Nothing) Then
                 MyBase.Tables.Add(New reporte_orden_produccionDataTable(ds.Tables("reporte_orden_produccion")))
             End If
+            If (Not (ds.Tables("reporte_puesta_punto")) Is Nothing) Then
+                MyBase.Tables.Add(New reporte_puesta_puntoDataTable(ds.Tables("reporte_puesta_punto")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -83,6 +88,16 @@ Partial Public Class prwpDataSet
     Public ReadOnly Property reporte_orden_produccion() As reporte_orden_produccionDataTable
         Get
             Return Me.tablereporte_orden_produccion
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property reporte_puesta_punto() As reporte_puesta_puntoDataTable
+        Get
+            Return Me.tablereporte_puesta_punto
         End Get
     End Property
     
@@ -156,6 +171,9 @@ Partial Public Class prwpDataSet
             If (Not (ds.Tables("reporte_orden_produccion")) Is Nothing) Then
                 MyBase.Tables.Add(New reporte_orden_produccionDataTable(ds.Tables("reporte_orden_produccion")))
             End If
+            If (Not (ds.Tables("reporte_puesta_punto")) Is Nothing) Then
+                MyBase.Tables.Add(New reporte_puesta_puntoDataTable(ds.Tables("reporte_puesta_punto")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -194,6 +212,12 @@ Partial Public Class prwpDataSet
                 Me.tablereporte_orden_produccion.InitVars
             End If
         End If
+        Me.tablereporte_puesta_punto = CType(MyBase.Tables("reporte_puesta_punto"),reporte_puesta_puntoDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tablereporte_puesta_punto) Is Nothing) Then
+                Me.tablereporte_puesta_punto.InitVars
+            End If
+        End If
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -206,11 +230,19 @@ Partial Public Class prwpDataSet
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
         Me.tablereporte_orden_produccion = New reporte_orden_produccionDataTable()
         MyBase.Tables.Add(Me.tablereporte_orden_produccion)
+        Me.tablereporte_puesta_punto = New reporte_puesta_puntoDataTable()
+        MyBase.Tables.Add(Me.tablereporte_puesta_punto)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Private Function ShouldSerializereporte_orden_produccion() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Private Function ShouldSerializereporte_puesta_punto() As Boolean
         Return false
     End Function
     
@@ -275,6 +307,9 @@ Partial Public Class prwpDataSet
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Delegate Sub reporte_orden_produccionRowChangeEventHandler(ByVal sender As Object, ByVal e As reporte_orden_produccionRowChangeEvent)
     
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Delegate Sub reporte_puesta_puntoRowChangeEventHandler(ByVal sender As Object, ByVal e As reporte_puesta_puntoRowChangeEvent)
+    
     '''<summary>
     '''Represents the strongly named DataTable class.
     '''</summary>
@@ -286,8 +321,6 @@ Partial Public Class prwpDataSet
         Private columnOP_ID As Global.System.Data.DataColumn
         
         Private columnFECHA As Global.System.Data.DataColumn
-        
-        Private columnOPD_ID As Global.System.Data.DataColumn
         
         Private columnCLIENTE As Global.System.Data.DataColumn
         
@@ -349,14 +382,6 @@ Partial Public Class prwpDataSet
         Public ReadOnly Property FECHAColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnFECHA
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property OPD_IDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnOPD_ID
             End Get
         End Property
         
@@ -445,9 +470,9 @@ Partial Public Class prwpDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function Addreporte_orden_produccionRow(ByVal OP_ID As Integer, ByVal FECHA As String, ByVal OPD_ID As Integer, ByVal CLIENTE As String, ByVal USUARIO As String, ByVal MEDIDA As String, ByVal GRAMAJE As String, ByVal PESO_SOL As Integer, ByVal PESAJE As Decimal) As reporte_orden_produccionRow
+        Public Overloads Function Addreporte_orden_produccionRow(ByVal OP_ID As Integer, ByVal FECHA As String, ByVal CLIENTE As String, ByVal USUARIO As String, ByVal MEDIDA As String, ByVal GRAMAJE As String, ByVal PESO_SOL As Integer, ByVal PESAJE As Decimal) As reporte_orden_produccionRow
             Dim rowreporte_orden_produccionRow As reporte_orden_produccionRow = CType(Me.NewRow,reporte_orden_produccionRow)
-            Dim columnValuesArray() As Object = New Object() {OP_ID, FECHA, OPD_ID, CLIENTE, USUARIO, MEDIDA, GRAMAJE, PESO_SOL, PESAJE}
+            Dim columnValuesArray() As Object = New Object() {OP_ID, FECHA, CLIENTE, USUARIO, MEDIDA, GRAMAJE, PESO_SOL, PESAJE}
             rowreporte_orden_produccionRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowreporte_orden_produccionRow)
             Return rowreporte_orden_produccionRow
@@ -472,7 +497,6 @@ Partial Public Class prwpDataSet
         Friend Sub InitVars()
             Me.columnOP_ID = MyBase.Columns("OP_ID")
             Me.columnFECHA = MyBase.Columns("FECHA")
-            Me.columnOPD_ID = MyBase.Columns("OPD_ID")
             Me.columnCLIENTE = MyBase.Columns("CLIENTE")
             Me.columnUSUARIO = MyBase.Columns("USUARIO")
             Me.columnMEDIDA = MyBase.Columns("MEDIDA")
@@ -488,8 +512,6 @@ Partial Public Class prwpDataSet
             MyBase.Columns.Add(Me.columnOP_ID)
             Me.columnFECHA = New Global.System.Data.DataColumn("FECHA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFECHA)
-            Me.columnOPD_ID = New Global.System.Data.DataColumn("OPD_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnOPD_ID)
             Me.columnCLIENTE = New Global.System.Data.DataColumn("CLIENTE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCLIENTE)
             Me.columnUSUARIO = New Global.System.Data.DataColumn("USUARIO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -505,7 +527,6 @@ Partial Public Class prwpDataSet
             Me.columnOP_ID.AllowDBNull = false
             Me.columnFECHA.ReadOnly = true
             Me.columnFECHA.MaxLength = 4000
-            Me.columnOPD_ID.AllowDBNull = false
             Me.columnCLIENTE.AllowDBNull = false
             Me.columnCLIENTE.MaxLength = 80
             Me.columnUSUARIO.AllowDBNull = false
@@ -645,6 +666,360 @@ Partial Public Class prwpDataSet
     End Class
     
     '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class reporte_puesta_puntoDataTable
+        Inherits Global.System.Data.TypedTableBase(Of reporte_puesta_puntoRow)
+        
+        Private columnPP_ID As Global.System.Data.DataColumn
+        
+        Private columnCLIENTE As Global.System.Data.DataColumn
+        
+        Private columnFECHA As Global.System.Data.DataColumn
+        
+        Private columnMEDIDA As Global.System.Data.DataColumn
+        
+        Private columnGRAMAJE As Global.System.Data.DataColumn
+        
+        Private columnREBOBINADORA As Global.System.Data.DataColumn
+        
+        Private columnOPERARIO As Global.System.Data.DataColumn
+        
+        Private columnPESO As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "reporte_puesta_punto"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property PP_IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPP_ID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property CLIENTEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCLIENTE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property FECHAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFECHA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property MEDIDAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMEDIDA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property GRAMAJEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGRAMAJE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property REBOBINADORAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnREBOBINADORA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property OPERARIOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnOPERARIO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property PESOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPESO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As reporte_puesta_puntoRow
+            Get
+                Return CType(Me.Rows(index),reporte_puesta_puntoRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event reporte_puesta_puntoRowChanging As reporte_puesta_puntoRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event reporte_puesta_puntoRowChanged As reporte_puesta_puntoRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event reporte_puesta_puntoRowDeleting As reporte_puesta_puntoRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event reporte_puesta_puntoRowDeleted As reporte_puesta_puntoRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Sub Addreporte_puesta_puntoRow(ByVal row As reporte_puesta_puntoRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Function Addreporte_puesta_puntoRow(ByVal PP_ID As Integer, ByVal CLIENTE As String, ByVal FECHA As Date, ByVal MEDIDA As String, ByVal GRAMAJE As String, ByVal REBOBINADORA As String, ByVal OPERARIO As String, ByVal PESO As Integer) As reporte_puesta_puntoRow
+            Dim rowreporte_puesta_puntoRow As reporte_puesta_puntoRow = CType(Me.NewRow,reporte_puesta_puntoRow)
+            Dim columnValuesArray() As Object = New Object() {PP_ID, CLIENTE, FECHA, MEDIDA, GRAMAJE, REBOBINADORA, OPERARIO, PESO}
+            rowreporte_puesta_puntoRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowreporte_puesta_puntoRow)
+            Return rowreporte_puesta_puntoRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As reporte_puesta_puntoDataTable = CType(MyBase.Clone,reporte_puesta_puntoDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New reporte_puesta_puntoDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnPP_ID = MyBase.Columns("PP_ID")
+            Me.columnCLIENTE = MyBase.Columns("CLIENTE")
+            Me.columnFECHA = MyBase.Columns("FECHA")
+            Me.columnMEDIDA = MyBase.Columns("MEDIDA")
+            Me.columnGRAMAJE = MyBase.Columns("GRAMAJE")
+            Me.columnREBOBINADORA = MyBase.Columns("REBOBINADORA")
+            Me.columnOPERARIO = MyBase.Columns("OPERARIO")
+            Me.columnPESO = MyBase.Columns("PESO")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnPP_ID = New Global.System.Data.DataColumn("PP_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPP_ID)
+            Me.columnCLIENTE = New Global.System.Data.DataColumn("CLIENTE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCLIENTE)
+            Me.columnFECHA = New Global.System.Data.DataColumn("FECHA", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFECHA)
+            Me.columnMEDIDA = New Global.System.Data.DataColumn("MEDIDA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMEDIDA)
+            Me.columnGRAMAJE = New Global.System.Data.DataColumn("GRAMAJE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGRAMAJE)
+            Me.columnREBOBINADORA = New Global.System.Data.DataColumn("REBOBINADORA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnREBOBINADORA)
+            Me.columnOPERARIO = New Global.System.Data.DataColumn("OPERARIO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnOPERARIO)
+            Me.columnPESO = New Global.System.Data.DataColumn("PESO", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPESO)
+            Me.columnPP_ID.AllowDBNull = false
+            Me.columnCLIENTE.AllowDBNull = false
+            Me.columnCLIENTE.MaxLength = 80
+            Me.columnMEDIDA.AllowDBNull = false
+            Me.columnMEDIDA.MaxLength = 10
+            Me.columnGRAMAJE.AllowDBNull = false
+            Me.columnGRAMAJE.MaxLength = 10
+            Me.columnREBOBINADORA.ReadOnly = true
+            Me.columnREBOBINADORA.MaxLength = 20
+            Me.columnOPERARIO.ReadOnly = true
+            Me.columnOPERARIO.MaxLength = 20
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Newreporte_puesta_puntoRow() As reporte_puesta_puntoRow
+            Return CType(Me.NewRow,reporte_puesta_puntoRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New reporte_puesta_puntoRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(reporte_puesta_puntoRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.reporte_puesta_puntoRowChangedEvent) Is Nothing) Then
+                RaiseEvent reporte_puesta_puntoRowChanged(Me, New reporte_puesta_puntoRowChangeEvent(CType(e.Row,reporte_puesta_puntoRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.reporte_puesta_puntoRowChangingEvent) Is Nothing) Then
+                RaiseEvent reporte_puesta_puntoRowChanging(Me, New reporte_puesta_puntoRowChangeEvent(CType(e.Row,reporte_puesta_puntoRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.reporte_puesta_puntoRowDeletedEvent) Is Nothing) Then
+                RaiseEvent reporte_puesta_puntoRowDeleted(Me, New reporte_puesta_puntoRowChangeEvent(CType(e.Row,reporte_puesta_puntoRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.reporte_puesta_puntoRowDeletingEvent) Is Nothing) Then
+                RaiseEvent reporte_puesta_puntoRowDeleting(Me, New reporte_puesta_puntoRowChangeEvent(CType(e.Row,reporte_puesta_puntoRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Removereporte_puesta_puntoRow(ByVal row As reporte_puesta_puntoRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As prwpDataSet = New prwpDataSet()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "reporte_puesta_puntoDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
     Partial Public Class reporte_orden_produccionRow
@@ -682,17 +1057,6 @@ Partial Public Class prwpDataSet
             End Get
             Set
                 Me(Me.tablereporte_orden_produccion.FECHAColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property OPD_ID() As Integer
-            Get
-                Return CType(Me(Me.tablereporte_orden_produccion.OPD_IDColumn),Integer)
-            End Get
-            Set
-                Me(Me.tablereporte_orden_produccion.OPD_IDColumn) = value
             End Set
         End Property
         
@@ -810,6 +1174,175 @@ Partial Public Class prwpDataSet
     End Class
     
     '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class reporte_puesta_puntoRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tablereporte_puesta_punto As reporte_puesta_puntoDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tablereporte_puesta_punto = CType(Me.Table,reporte_puesta_puntoDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property PP_ID() As Integer
+            Get
+                Return CType(Me(Me.tablereporte_puesta_punto.PP_IDColumn),Integer)
+            End Get
+            Set
+                Me(Me.tablereporte_puesta_punto.PP_IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property CLIENTE() As String
+            Get
+                Return CType(Me(Me.tablereporte_puesta_punto.CLIENTEColumn),String)
+            End Get
+            Set
+                Me(Me.tablereporte_puesta_punto.CLIENTEColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property FECHA() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablereporte_puesta_punto.FECHAColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FECHA' de la tabla 'reporte_puesta_punto' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablereporte_puesta_punto.FECHAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property MEDIDA() As String
+            Get
+                Return CType(Me(Me.tablereporte_puesta_punto.MEDIDAColumn),String)
+            End Get
+            Set
+                Me(Me.tablereporte_puesta_punto.MEDIDAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property GRAMAJE() As String
+            Get
+                Return CType(Me(Me.tablereporte_puesta_punto.GRAMAJEColumn),String)
+            End Get
+            Set
+                Me(Me.tablereporte_puesta_punto.GRAMAJEColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property REBOBINADORA() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablereporte_puesta_punto.REBOBINADORAColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'REBOBINADORA' de la tabla 'reporte_puesta_punto' es DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablereporte_puesta_punto.REBOBINADORAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property OPERARIO() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablereporte_puesta_punto.OPERARIOColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'OPERARIO' de la tabla 'reporte_puesta_punto' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablereporte_puesta_punto.OPERARIOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property PESO() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablereporte_puesta_punto.PESOColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PESO' de la tabla 'reporte_puesta_punto' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablereporte_puesta_punto.PESOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsFECHANull() As Boolean
+            Return Me.IsNull(Me.tablereporte_puesta_punto.FECHAColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetFECHANull()
+            Me(Me.tablereporte_puesta_punto.FECHAColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsREBOBINADORANull() As Boolean
+            Return Me.IsNull(Me.tablereporte_puesta_punto.REBOBINADORAColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetREBOBINADORANull()
+            Me(Me.tablereporte_puesta_punto.REBOBINADORAColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsOPERARIONull() As Boolean
+            Return Me.IsNull(Me.tablereporte_puesta_punto.OPERARIOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetOPERARIONull()
+            Me(Me.tablereporte_puesta_punto.OPERARIOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsPESONull() As Boolean
+            Return Me.IsNull(Me.tablereporte_puesta_punto.PESOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetPESONull()
+            Me(Me.tablereporte_puesta_punto.PESOColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
@@ -831,6 +1364,42 @@ Partial Public Class prwpDataSet
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property Row() As reporte_orden_produccionRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Class reporte_puesta_puntoRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As reporte_puesta_puntoRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New(ByVal row As reporte_puesta_puntoRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Row() As reporte_puesta_puntoRow
             Get
                 Return Me.eventRow
             End Get
@@ -977,7 +1546,6 @@ Namespace prwpDataSetTableAdapters
             tableMapping.DataSetTable = "reporte_orden_produccion"
             tableMapping.ColumnMappings.Add("OP_ID", "OP_ID")
             tableMapping.ColumnMappings.Add("FECHA", "FECHA")
-            tableMapping.ColumnMappings.Add("OPD_ID", "OPD_ID")
             tableMapping.ColumnMappings.Add("CLIENTE", "CLIENTE")
             tableMapping.ColumnMappings.Add("USUARIO", "USUARIO")
             tableMapping.ColumnMappings.Add("MEDIDA", "MEDIDA")
@@ -1000,9 +1568,9 @@ Namespace prwpDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT OP_ID, FECHA, OPD_ID, CLIENTE, USUARIO, MEDIDA, GRAMAJE, PESO_SOL, PESAJE "& _ 
-                "FROM dbo.reporte_orden_produccion where FECHA between convert(date,@fecha_inicia"& _ 
-                "l,103) and convert(date,@fecha_final,103)"
+            Me._commandCollection(0).CommandText = "SELECT OP_ID, FECHA, CLIENTE, USUARIO, MEDIDA, GRAMAJE, PESO_SOL, PESAJE FROM rep"& _ 
+                "orte_orden_produccion WHERE (FECHA BETWEEN CONVERT (date, @fecha_inicial, 103) A"& _ 
+                "ND CONVERT (date, @fecha_final, 103))"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fecha_inicial", Global.System.Data.SqlDbType.NVarChar, 4000, Global.System.Data.ParameterDirection.Input, 0, 0, "FECHA", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fecha_final", Global.System.Data.SqlDbType.NVarChar, 4000, Global.System.Data.ParameterDirection.Input, 0, 0, "FECHA", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -1048,6 +1616,187 @@ Namespace prwpDataSetTableAdapters
                 Me.Adapter.SelectCommand.Parameters(1).Value = CType(fecha_final,String)
             End If
             Dim dataTable As prwpDataSet.reporte_orden_produccionDataTable = New prwpDataSet.reporte_orden_produccionDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class reporte_puesta_puntoTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "reporte_puesta_punto"
+            tableMapping.ColumnMappings.Add("PP_ID", "PP_ID")
+            tableMapping.ColumnMappings.Add("CLIENTE", "CLIENTE")
+            tableMapping.ColumnMappings.Add("FECHA", "FECHA")
+            tableMapping.ColumnMappings.Add("MEDIDA", "MEDIDA")
+            tableMapping.ColumnMappings.Add("GRAMAJE", "GRAMAJE")
+            tableMapping.ColumnMappings.Add("REBOBINADORA", "REBOBINADORA")
+            tableMapping.ColumnMappings.Add("OPERARIO", "OPERARIO")
+            tableMapping.ColumnMappings.Add("PESO", "PESO")
+            Me._adapter.TableMappings.Add(tableMapping)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.PRWP.My.MySettings.Default.prwpConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT        PP_ID, CLIENTE, FECHA, MEDIDA, GRAMAJE, REBOBINADORA, OPERARIO, PES"& _ 
+                "O"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            reporte_puesta_punto"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As prwpDataSet.reporte_puesta_puntoDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData() As prwpDataSet.reporte_puesta_puntoDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As prwpDataSet.reporte_puesta_puntoDataTable = New prwpDataSet.reporte_puesta_puntoDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
