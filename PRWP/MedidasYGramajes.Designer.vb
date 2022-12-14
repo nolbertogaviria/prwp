@@ -34,22 +34,22 @@ Partial Class MedidasYGramajes
         Me.txtGramaje = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel2 = New System.Windows.Forms.FlowLayoutPanel()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.dgvOperarios = New System.Windows.Forms.DataGridView()
         Me.lblNuevoTipo = New System.Windows.Forms.Label()
         Me.btnGuardarOperario = New System.Windows.Forms.Button()
         Me.txtOperario = New System.Windows.Forms.TextBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.dgvRebobinadoras = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnGuardarRebob = New System.Windows.Forms.Button()
         Me.txtRebobinadora = New System.Windows.Forms.TextBox()
-        Me.dgvRebobinadoras = New System.Windows.Forms.DataGridView()
-        Me.dgvOperarios = New System.Windows.Forms.DataGridView()
         Me.btnRefresh = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        CType(Me.dgvOperarios, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         CType(Me.dgvRebobinadoras, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgvOperarios, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblResultado
@@ -177,6 +177,23 @@ Partial Class MedidasYGramajes
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Operarios"
         '
+        'dgvOperarios
+        '
+        Me.dgvOperarios.AllowUserToAddRows = False
+        Me.dgvOperarios.AllowUserToOrderColumns = True
+        Me.dgvOperarios.AllowUserToResizeRows = False
+        Me.dgvOperarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvOperarios.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.dgvOperarios.Location = New System.Drawing.Point(3, 57)
+        Me.dgvOperarios.Name = "dgvOperarios"
+        Me.dgvOperarios.ReadOnly = True
+        Me.dgvOperarios.RowHeadersVisible = False
+        Me.dgvOperarios.RowHeadersWidth = 36
+        Me.dgvOperarios.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.dgvOperarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvOperarios.Size = New System.Drawing.Size(268, 296)
+        Me.dgvOperarios.TabIndex = 29
+        '
         'lblNuevoTipo
         '
         Me.lblNuevoTipo.AutoSize = True
@@ -219,6 +236,23 @@ Partial Class MedidasYGramajes
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Rebobinadoras"
         '
+        'dgvRebobinadoras
+        '
+        Me.dgvRebobinadoras.AllowUserToAddRows = False
+        Me.dgvRebobinadoras.AllowUserToOrderColumns = True
+        Me.dgvRebobinadoras.AllowUserToResizeRows = False
+        Me.dgvRebobinadoras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvRebobinadoras.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.dgvRebobinadoras.Location = New System.Drawing.Point(3, 57)
+        Me.dgvRebobinadoras.Name = "dgvRebobinadoras"
+        Me.dgvRebobinadoras.ReadOnly = True
+        Me.dgvRebobinadoras.RowHeadersVisible = False
+        Me.dgvRebobinadoras.RowHeadersWidth = 36
+        Me.dgvRebobinadoras.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.dgvRebobinadoras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvRebobinadoras.Size = New System.Drawing.Size(268, 296)
+        Me.dgvRebobinadoras.TabIndex = 28
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -247,40 +281,6 @@ Partial Class MedidasYGramajes
         Me.txtRebobinadora.Name = "txtRebobinadora"
         Me.txtRebobinadora.Size = New System.Drawing.Size(100, 20)
         Me.txtRebobinadora.TabIndex = 25
-        '
-        'dgvRebobinadoras
-        '
-        Me.dgvRebobinadoras.AllowUserToAddRows = False
-        Me.dgvRebobinadoras.AllowUserToOrderColumns = True
-        Me.dgvRebobinadoras.AllowUserToResizeRows = False
-        Me.dgvRebobinadoras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvRebobinadoras.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.dgvRebobinadoras.Location = New System.Drawing.Point(3, 57)
-        Me.dgvRebobinadoras.Name = "dgvRebobinadoras"
-        Me.dgvRebobinadoras.ReadOnly = True
-        Me.dgvRebobinadoras.RowHeadersVisible = False
-        Me.dgvRebobinadoras.RowHeadersWidth = 36
-        Me.dgvRebobinadoras.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.dgvRebobinadoras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvRebobinadoras.Size = New System.Drawing.Size(268, 296)
-        Me.dgvRebobinadoras.TabIndex = 28
-        '
-        'dgvOperarios
-        '
-        Me.dgvOperarios.AllowUserToAddRows = False
-        Me.dgvOperarios.AllowUserToOrderColumns = True
-        Me.dgvOperarios.AllowUserToResizeRows = False
-        Me.dgvOperarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvOperarios.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.dgvOperarios.Location = New System.Drawing.Point(3, 57)
-        Me.dgvOperarios.Name = "dgvOperarios"
-        Me.dgvOperarios.ReadOnly = True
-        Me.dgvOperarios.RowHeadersVisible = False
-        Me.dgvOperarios.RowHeadersWidth = 36
-        Me.dgvOperarios.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.dgvOperarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvOperarios.Size = New System.Drawing.Size(268, 296)
-        Me.dgvOperarios.TabIndex = 29
         '
         'btnRefresh
         '
@@ -316,10 +316,10 @@ Partial Class MedidasYGramajes
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        CType(Me.dgvOperarios, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         CType(Me.dgvRebobinadoras, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgvOperarios, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

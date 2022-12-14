@@ -53,6 +53,7 @@ Public Class MedidasYGramajes
 
 
     Private Sub btnClickOperario(m As String)
+        MsgBox(m)
         Dim hm As String = Format(Now, "hh:mm:ss tt")
         Dim result As DialogResult = MsgBox("Eliminar operario " & m & "?", MessageBoxButtons.YesNo)
         If (result = DialogResult.Yes) Then
@@ -352,14 +353,38 @@ Public Class MedidasYGramajes
     End Sub
 
     Private Sub dgvRebobinadoras_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgvRebobinadoras.UserDeletingRow
-        If e.Row.Index >= 0 Then
-            btnClickRebobinadora(e.Row.Cells(0).Value)
+        If Not MessageBox.Show("Seguro que quiere eliminar la fila " & e.Row.Cells(0).Value & "?", "Advertencia!!", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+            e.Cancel = True
+        Else
+            If e.Row.Index >= 0 And e.Row.Index <= dgvOperarios.Rows.Count Then
+                Dim sql As String = "delete top(1) from rebobinadora where rebobinadora = '" & e.Row.Cells(0).Value & "'"
+                Console.WriteLine(sql)
+                If (sqlNonQuery(sql)) Then
+                    'populateRebobinadoras()
+                End If
+            End If
         End If
     End Sub
 
     Private Sub dgvOperarios_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgvOperarios.UserDeletingRow
-        If e.Row.Index >= 0 Then
-            btnClickOperario(e.Row.Cells(0).Value)
+
+
+
+        If Not MessageBox.Show("Seguro que quiere eliminar la fila " & e.Row.Cells(0).Value & "?", "Advertencia!!", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+            e.Cancel = True
+        Else
+
+            If e.Row.Index >= 0 And e.Row.Index <= dgvOperarios.Rows.Count Then
+                Dim sql As String = "delete top(1) from operario where operario = '" & e.Row.Cells(0).Value & "'"
+                Console.WriteLine(sql)
+                If (sqlNonQuery(sql)) Then
+                    'populateOperarios()
+                End If
+            End If
         End If
+    End Sub
+
+    Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
+        inicial()
     End Sub
 End Class
