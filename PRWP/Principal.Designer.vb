@@ -54,6 +54,7 @@ Partial Class Principal
         Me.btn_usuarios = New System.Windows.Forms.Button()
         Me.btnCerrarS = New System.Windows.Forms.Button()
         Me.tabsPrincipal = New System.Windows.Forms.TabControl()
+        Me.tabPPP = New System.Windows.Forms.TabPage()
         Me.tabPesaje = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
@@ -108,9 +109,11 @@ Partial Class Principal
         Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.bloquearTabs = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.contMenu.SuspendLayout()
         CType(Me.pctLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabsPrincipal.SuspendLayout()
+        Me.tabPPP.SuspendLayout()
         Me.tabPesaje.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
@@ -289,6 +292,7 @@ Partial Class Principal
         Me.tabsPrincipal.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tabsPrincipal.Controls.Add(Me.tabPPP)
         Me.tabsPrincipal.Controls.Add(Me.tabPesaje)
         Me.tabsPrincipal.Controls.Add(Me.tabPuestaPunto)
         Me.tabsPrincipal.Controls.Add(Me.tabOrdenProduccion)
@@ -300,6 +304,17 @@ Partial Class Principal
         Me.tabsPrincipal.Size = New System.Drawing.Size(884, 631)
         Me.tabsPrincipal.TabIndex = 4
         Me.tabsPrincipal.TabStop = False
+        '
+        'tabPPP
+        '
+        Me.tabPPP.Controls.Add(Me.Button1)
+        Me.tabPPP.Location = New System.Drawing.Point(4, 22)
+        Me.tabPPP.Name = "tabPPP"
+        Me.tabPPP.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabPPP.Size = New System.Drawing.Size(876, 605)
+        Me.tabPPP.TabIndex = 5
+        Me.tabPPP.Text = "PPP"
+        Me.tabPPP.UseVisualStyleBackColor = True
         '
         'tabPesaje
         '
@@ -1074,11 +1089,25 @@ Partial Class Principal
         '
         Me.bloquearTabs.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.bloquearTabs.ForeColor = System.Drawing.Color.Black
-        Me.bloquearTabs.Location = New System.Drawing.Point(179, 20)
+        Me.bloquearTabs.Location = New System.Drawing.Point(179, 5)
         Me.bloquearTabs.Name = "bloquearTabs"
         Me.bloquearTabs.Size = New System.Drawing.Size(632, 38)
         Me.bloquearTabs.TabIndex = 8
         Me.bloquearTabs.Text = "Pesaje"
+        '
+        'Button1
+        '
+        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button1.BackColor = System.Drawing.SystemColors.HotTrack
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.Button1.Location = New System.Drawing.Point(20, 31)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(164, 50)
+        Me.Button1.TabIndex = 10
+        Me.Button1.Text = "nuevo form"
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'Principal
         '
@@ -1095,6 +1124,7 @@ Partial Class Principal
         Me.contMenu.ResumeLayout(False)
         CType(Me.pctLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabsPrincipal.ResumeLayout(False)
+        Me.tabPPP.ResumeLayout(False)
         Me.tabPesaje.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel2.ResumeLayout(False)
@@ -1198,4 +1228,6 @@ Partial Class Principal
     Friend WithEvents PrintDocument1 As Printing.PrintDocument
     Friend WithEvents bloquearTabs As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents tabPPP As TabPage
+    Friend WithEvents Button1 As Button
 End Class

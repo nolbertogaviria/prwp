@@ -698,9 +698,9 @@ Public Class Principal
         End If
     End Sub
 
-
-
-
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        puesta_punto_pesaje.Show()
+    End Sub
 
     Private Sub tabsPrincipal_SelectedIndexChanged(sender As Object, e As EventArgs) Handles tabsPrincipal.SelectedIndexChanged
         If (perfilUsuario > 2 And tabsPrincipal.SelectedIndex > 1) Then
