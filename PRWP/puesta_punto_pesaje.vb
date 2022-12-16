@@ -2,6 +2,39 @@
 
 Public Class puesta_punto_pesaje
 
+    Private medidas As New DataTable
+
+    Public Sub populateMedidas()
+        If (myConn.State = ConnectionState.Closed) Then myConn.Open()
+        Dim t As Integer
+        Dim DRm As SqlDataReader
+        Dim DTm = New DataTable()
+        Dim sqlC As String = "select medida
+            from orden_produccion_detalle 
+            where gramaje = '" & cmbOPGram.Text & "'
+            and orden_produccion_id = '" & cmbOP.Text & "'"
+        DRm = New SqlCommand(sqlC, myConn).ExecuteReader()
+
+        With DTm.Columns
+            .Add("medida", GetType(String))
+            .Add("activa", GetType(Integer))
+        End With
+        If DRm.HasRows Then
+            Do While DRm.Read()
+                t += 1
+                DTm.Rows.Add(
+                    DRm.Item("medida"),
+                    1
+                )
+            Loop
+        End If
+        medidas = DTm
+        DRm.Close()
+        myConn.Close()
+        Console.WriteLine(t & " Medidas")
+    End Sub
+
+
     Public Sub populateCmbOP()
         If (myConn.State = ConnectionState.Closed) Then myConn.Open()
         Dim DRop As SqlDataReader
@@ -135,5 +168,28 @@ Public Class puesta_punto_pesaje
             & "where op.id = '" & cmbOP.SelectedValue & "'"
         txtCliente.Text = sqlScalar(sql)
         populateCmbGram()
+    End Sub
+
+    Private Sub med1_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles med1.SelectionChangeCommitted
+        Dim myRow() As Data.DataRow
+        myRow = medidas.Select("medida = '" & med1.Text & "'")
+        myRow(0)("activa") = 0
+    End Sub
+
+    Private Sub med1_DropDown(sender As Object, e As EventArgs) Handles med1.DropDown
+        If (medidas.Rows.Count > 0) Then
+            Dim filterDT As DataTable = medidas.Clone()
+            Dim rows As DataRow() = medidas.[Select]("[activa]=1")
+            For Each row As DataRow In rows
+                filterDT.ImportRow(row)
+            Next
+            med1.DataSource = filterDT
+        Else
+            MsgBox("Lo siento, no encontre el dataTable para medidas :´(")
+        End If
+    End Sub
+
+    Private Sub cmbOPGram_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cmbOPGram.SelectionChangeCommitted
+        populateMedidas()
     End Sub
 End Class

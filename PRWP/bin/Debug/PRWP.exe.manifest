@@ -678,14 +678,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PRWP.exe" size="756680">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PRWP.exe" size="758216">
       <assemblyIdentity name="PRWP" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>fTFCp76o6+tfZpCqc2il2pSliJV26PgPNUVxOo8Y9+Y=</dsig:DigestValue>
+        <dsig:DigestValue>MTUkr2AV52KRVgr9jweIO+vtcGSor/F0prS/yt1pUC4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
