@@ -32,6 +32,25 @@ Public Class puesta_punto_pesaje
         DRm.Close()
         myConn.Close()
         Console.WriteLine(t & " Medidas")
+
+        If (medidas.Rows.Count > 0) Then
+            Dim filterDT As DataTable = medidas.Clone()
+            Dim rows As DataRow() = medidas.[Select]("[activa]=1")
+            For Each row As DataRow In rows
+                filterDT.ImportRow(row)
+            Next
+            'med1.DataSource = filterDT
+            With med1
+                .ValueMember = "medida"
+                .DisplayMember = "medida"
+                .DataSource = filterDT
+                .SelectedValue = vbNull
+            End With
+            med1.Enabled = True
+        Else
+            MsgBox("Lo siento, no encontre el dataTable para medidas :´(")
+        End If
+
     End Sub
 
 
@@ -168,6 +187,7 @@ Public Class puesta_punto_pesaje
             & "where op.id = '" & cmbOP.SelectedValue & "'"
         txtCliente.Text = sqlScalar(sql)
         populateCmbGram()
+        cmbOPGram.Enabled = True
     End Sub
 
     Private Sub med1_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles med1.SelectionChangeCommitted
@@ -176,18 +196,6 @@ Public Class puesta_punto_pesaje
         myRow(0)("activa") = 0
     End Sub
 
-    Private Sub med1_DropDown(sender As Object, e As EventArgs) Handles med1.DropDown
-        If (medidas.Rows.Count > 0) Then
-            Dim filterDT As DataTable = medidas.Clone()
-            Dim rows As DataRow() = medidas.[Select]("[activa]=1")
-            For Each row As DataRow In rows
-                filterDT.ImportRow(row)
-            Next
-            med1.DataSource = filterDT
-        Else
-            MsgBox("Lo siento, no encontre el dataTable para medidas :´(")
-        End If
-    End Sub
 
     Private Sub cmbOPGram_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cmbOPGram.SelectionChangeCommitted
         populateMedidas()

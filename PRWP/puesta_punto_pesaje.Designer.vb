@@ -126,6 +126,7 @@ Partial Class puesta_punto_pesaje
         '
         Me.cmbOPGram.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cmbOPGram.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbOPGram.Enabled = False
         Me.cmbOPGram.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbOPGram.FormattingEnabled = True
         Me.cmbOPGram.Location = New System.Drawing.Point(152, 48)
@@ -235,6 +236,7 @@ Partial Class puesta_punto_pesaje
         '
         Me.med1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.med1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.med1.Enabled = False
         Me.med1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.med1.FormattingEnabled = True
         Me.med1.Location = New System.Drawing.Point(133, 69)
@@ -315,6 +317,7 @@ Partial Class puesta_punto_pesaje
         Me.ComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.ComboBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox1.Enabled = False
         Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(228, 69)
@@ -424,6 +427,7 @@ Partial Class puesta_punto_pesaje
         Me.ComboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.ComboBox2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox2.Enabled = False
         Me.ComboBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox2.FormattingEnabled = True
         Me.ComboBox2.Location = New System.Drawing.Point(323, 69)
@@ -436,6 +440,7 @@ Partial Class puesta_punto_pesaje
         Me.ComboBox3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.ComboBox3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox3.Enabled = False
         Me.ComboBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox3.FormattingEnabled = True
         Me.ComboBox3.Location = New System.Drawing.Point(418, 69)
@@ -448,6 +453,7 @@ Partial Class puesta_punto_pesaje
         Me.ComboBox4.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.ComboBox4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox4.Enabled = False
         Me.ComboBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox4.FormattingEnabled = True
         Me.ComboBox4.Location = New System.Drawing.Point(513, 69)
@@ -460,6 +466,7 @@ Partial Class puesta_punto_pesaje
         Me.ComboBox5.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.ComboBox5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ComboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox5.Enabled = False
         Me.ComboBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox5.FormattingEnabled = True
         Me.ComboBox5.Location = New System.Drawing.Point(608, 69)
